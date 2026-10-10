@@ -16,5 +16,6 @@
     "line-endings:check": "node ./scripts/check-line-endings.js",
     "preview:site": "npm run build:site && npx wrangler@4.129.0 dev -c wrangler.site.jsonc",
     "deploy:site": "npm run build:site && npx wrangler@4.129.0 whoami && npx wrangler@4.129.0 deploy -c wrangler.site.jsonc"
-  }
+  },
+  "version": "0.0.1"
 }
