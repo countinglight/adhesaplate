@@ -2,8 +2,13 @@ import { site } from "../site.config";
 
 // Paths that exist in this build. Every internal link goes through href(), so
 // a page that has not been rebuilt yet still resolves: it points at the same
-// path on the legacy site. Adding a page here (and under src/pages) is all it
-// takes to bring its links home.
+// path on the legacy site. Hand-built pages are listed here; pages in the
+// `pages` content collection are picked up from their front matter.
+const migrated = import.meta.glob<{ path: string }>("../content/pages/**/*.md", {
+  eager: true,
+  import: "frontmatter",
+});
+
 const built = new Set([
   "/",
   "/products/",
@@ -14,6 +19,7 @@ const built = new Set([
   "/faq/",
   "/certifications/",
   "/contact-us/",
+  ...Object.values(migrated).map((frontmatter) => frontmatter.path),
 ]);
 
 export function isBuilt(path: string): boolean {

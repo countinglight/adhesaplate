@@ -1,0 +1,212 @@
+---
+// One route for every page in the `pages` content collection. The URL is the
+// entry's `path`, which matches the legacy site's path for that page.
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import Base from "../layouts/Base.astro";
+import PageHero from "../components/PageHero.astro";
+import CtaBand from "../components/CtaBand.astro";
+import Icon from "../components/Icon.astro";
+import { quoteHref, site } from "../site.config";
+
+export async function getStaticPaths() {
+  const pages = await getCollection("pages");
+  return pages.map((page) => ({
+    params: { slug: page.data.path.replace(/^\/|\/$/g, "") },
+    props: { page, siblings: pages.filter((other) => other.data.section === page.data.section) },
+  }));
+}
+
+interface Props {
+  page: CollectionEntry<"pages">;
+  siblings: CollectionEntry<"pages">[];
+}
+
+const sections = {
+  products: { name: "Products", path: "/products/", more: "More products" },
+  industries: { name: "Industries", path: "/industries/", more: "Other industries" },
+  materials: { name: "Materials", path: "/materials/", more: "Other materials" },
+  capabilities: { name: "Capabilities", path: "/capabilities/", more: "More capabilities" },
+  blog: { name: "Blog", path: "/blog/", more: "More articles" },
+} as const;
+
+const { page, siblings } = Astro.props;
+const { data } = page;
+const section = sections[data.section];
+const { Content } = await render(page);
+const isPost = data.section === "blog";
+const others = siblings
+  .filter((other) => other.id !== page.id)
+  .sort((a, b) =>
+    isPost
+      ? (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0)
+      : a.data.title.localeCompare(b.data.title),
+  )
+  .slice(0, isPost ? 6 : 30);
+const dateText = data.date?.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+
+const jsonLd = isPost
+  ? {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      headline: data.title,
+      description: data.description,
+      ...(data.date ? { datePublished: data.date.toISOString().slice(0, 10) } : {}),
+      publisher: { "@id": `https://${site.productionHost}/#organization` },
+    }
+  : undefined;
+---
+
+<Base title={data.title} description={data.description} jsonLd={jsonLd}>
+  <PageHero title={data.title} eyebrow={section.name} parent={{ name: section.name, path: section.path }} />
+
+  <section class="section">
+    <div class="container layout">
+      <article class="prose content">
+        {isPost && dateText && <p class="meta">{dateText}</p>}
+        <Content />
+      </article>
+
+      <aside class="side">
+        {
+          data.image && (
+            <div class="side__photo">
+              <Image
+                src={data.image}
+                alt={data.imageAlt ?? `${data.title} made by Adhesa Plate`}
+                widths={[320, 480, 760]}
+                sizes="(min-width: 960px) 340px, 92vw"
+                loading="eager"
+              />
+            </div>
+          )
+        }
+        <div class="card side__quote">
+          <h2>Need this for your product?</h2>
+          <p>Tell us the surface, the environment and the quantity, and we will recommend a construction.</p>
+          <a class="btn btn--primary" href={quoteHref}>Get a free quote</a>
+          <a class="side__phone" href={site.phone.href}>
+            <Icon name="phone" size={18} />
+            {site.phone.display}
+          </a>
+        </div>
+        {
+          others.length > 0 && (
+            <nav class="side__more" aria-label={section.more}>
+              <h2>{section.more}</h2>
+              <ul>
+                {others.map((other) => (
+                  <li>
+                    <a href={other.data.path}>{other.data.title}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )
+        }
+      </aside>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 21rem);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  .content {
+    max-width: 46rem;
+  }
+  .content :global(h2:first-child),
+  .content :global(p:first-child) {
+    margin-top: 0;
+  }
+  .content :global(img) {
+    border-radius: var(--radius);
+    margin-block: 0.5rem;
+  }
+  .content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  .content :global(th),
+  .content :global(td) {
+    padding: 0.55rem 0.7rem;
+    border: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+  }
+  .content :global(th) {
+    background: var(--surface-soft);
+    color: var(--ink-900);
+  }
+  .meta {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--ink-500);
+  }
+  .side {
+    display: grid;
+    gap: 1.5rem;
+    position: sticky;
+    top: calc(var(--header-h) + 1.5rem);
+  }
+  .side__photo {
+    display: grid;
+    place-items: center;
+    padding: 1.25rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: linear-gradient(160deg, #fff 30%, var(--surface-tint) 100%);
+  }
+  .side__photo :global(img) {
+    width: auto;
+    max-height: 22rem;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+  }
+  .side h2 {
+    font-size: 1.15rem;
+  }
+  .side__quote {
+    background: var(--gradient-soft);
+  }
+  .side__phone {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .side__more ul {
+    display: grid;
+    gap: 0.1rem;
+    margin-top: 0.75rem;
+  }
+  .side__more a {
+    display: block;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid var(--line);
+    color: var(--ink-700);
+    font-size: 0.96rem;
+    text-decoration: none;
+  }
+  .side__more a:hover {
+    color: var(--blue-700);
+  }
+  @media (max-width: 960px) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .side {
+      position: static;
+    }
+  }
+</style>

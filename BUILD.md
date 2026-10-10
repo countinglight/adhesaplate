@@ -112,10 +112,18 @@ The cutover steps are in the guide:
 
 ## Adding a page
 
-1. Create `website/src/pages/<path>/index.astro`, using the same path as the legacy page
-   ([doc/seo/url-inventory.md](doc/seo/url-inventory.md)). Wrap it in the `Base` layout and give it a
-   `title` and a `description`.
-2. Add the path to the `built` set in `website/src/lib/links.ts`. Links to it across the site stop
-   pointing at the legacy site.
-3. Catalog entries (products, industries, materials, capabilities, FAQ) are data files under
-   `website/src/data/`; their shape is checked at build time by `website/src/content.config.ts`.
+**A content page** (product, industry, material, capability, blog post) is one Markdown file under
+`website/src/content/pages/<section>/`. Its front matter gives the `title`, `description`, `section`
+and `path`; `path` is the page's URL and must be the legacy page's path
+([doc/seo/url-inventory.md](doc/seo/url-inventory.md)). `website/src/pages/[...slug].astro` renders
+it, and links to it across the site stop pointing at the legacy site automatically. The front matter
+is checked at build time by `website/src/content.config.ts`.
+
+**A hand-built page** (an index or a page with its own layout):
+
+1. Create `website/src/pages/<path>/index.astro`, using the legacy path. Wrap it in the `Base`
+   layout and give it a `title` and a `description`.
+2. Add the path to the `built` set in `website/src/lib/links.ts`.
+
+Catalog cards (the entries listed on the index pages) and the FAQ are data files under
+`website/src/data/`.

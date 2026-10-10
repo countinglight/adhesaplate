@@ -34,10 +34,10 @@ Design".
 | --- | --- | --- |
 | `/products/agency-fcc-labels/` | legacy |  |
 | `/products/back-panel-labels/` | legacy |  |
-| `/products/barcode-qr-code-labels/` | legacy |  |
+| `/products/barcode-qr-code-labels/` | built | Text checked against a current-design archive capture. |
 | `/products/custom-application/` | legacy |  |
 | `/products/custom-shape-labels/` | legacy |  |
-| `/products/device-spacers-insulators/` | legacy |  |
+| `/products/device-spacers-insulators/` | built | Text checked against a current-design archive capture. |
 | `/products/dome-labels/` | legacy |  |
 | `/products/equipment-labels/` | legacy |  |
 | `/products/graphic-overlays/` | legacy |  |
@@ -76,7 +76,7 @@ Design".
 
 | Path | Status | Note |
 | --- | --- | --- |
-| `/capabilities/screen-printing/` | legacy |  |
+| `/capabilities/screen-printing/` | built | Text checked against a current-design archive capture. |
 | `/capabilities/uv-ink-jet-printing/` | legacy |  |
 | `/capabilities/color-matching/` | legacy |  |
 | `/capabilities/serializing-barcoding/` | legacy |  |
@@ -125,4 +125,4 @@ Design".
 | `/print-preview-page/` | legacy | WordPress leftover. Do not rebuild; let it 404. |
 | `/test-product/` | legacy | WordPress leftover. Do not rebuild; let it 404. |
 
-77 URLs in total, 9 built.
+77 URLs in total, 12 built.
