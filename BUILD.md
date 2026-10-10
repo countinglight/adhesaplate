@@ -62,7 +62,7 @@ Run from the repository root.
 2. Create the Worker with one manual deploy: `npx wrangler@4.129.0 login`, then
    `npm run deploy:site`. The first deploy creates the custom domain from `wrangler.site.jsonc`.
 3. Connect Git, in the dashboard: **Workers & Pages** > `adhesaplate-site` > **Settings** >
-   **Builds** > **Connect**. Grant the Cloudflare GitHub app access to `vladsadovsky/adhesaplate`.
+   **Builds** > **Connect**. Grant the Cloudflare GitHub app access to `countinglight/adhesaplate`.
    - Production branch: `deploy`. Root directory: `/`.
    - Build command: `npm run build:site`.
    - Deploy command: `npx wrangler@4.129.0 deploy -c wrangler.site.jsonc`.
