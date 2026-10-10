@@ -1,6 +1,8 @@
 ---
 // Card grid for a catalog collection (products, industries, materials,
 // capabilities). Entries with a photo get a picture card, the rest an icon.
+// The title is the link, so its text names the destination; "Learn more" is
+// decoration.
 import { Image } from "astro:assets";
 import Icon from "./Icon.astro";
 import { href, isBuilt } from "../lib/links";
@@ -40,12 +42,16 @@ const { entries, columns = 3, fallbackIcon = "layers" } = Astro.props;
             <Icon name={(entry.icon ?? fallbackIcon) as any} />
           </span>
         )}
-        <h3>{entry.title}</h3>
+        <h3>
+          <a class="card__title-link" href={href(entry.path)}>
+            {entry.title}
+          </a>
+        </h3>
         {entry.summary && <p>{entry.summary}</p>}
-        <a class="card__link" href={href(entry.path)}>
+        <span class="card__link" aria-hidden="true">
           Learn more
           <Icon name={isBuilt(entry.path) ? "arrow" : "external"} size={16} />
-        </a>
+        </span>
       </li>
     ))
   }

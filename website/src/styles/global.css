@@ -290,7 +290,8 @@ a.card {
   color: inherit;
 }
 a.card:hover,
-.card:has(.card__link:hover) {
+.card:has(.card__link:hover),
+.card:has(.card__title-link:hover) {
   transform: translateY(-3px);
   box-shadow: var(--shadow);
   border-color: #c9dbf6;
@@ -309,8 +310,16 @@ a.card:hover,
   font-size: 0.95rem;
   text-decoration: none;
 }
+span.card__link {
+  color: var(--blue-600);
+}
+.card__title-link {
+  color: inherit;
+  text-decoration: none;
+}
 /* Whole card is the click target, the link keeps the accessible name. */
-.card__link::after {
+a.card__link::after,
+.card__title-link::after {
   content: "";
   position: absolute;
   inset: 0;

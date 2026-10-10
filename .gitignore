@@ -19,3 +19,6 @@ dist/
 
 # debug
 npm-debug.*
+
+# Lighthouse reports (npm run lighthouse)
+lighthouse-reports/

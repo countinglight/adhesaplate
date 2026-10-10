@@ -49,6 +49,7 @@ Run from the repository root.
 | `npm run build:site`   | Builds `website/dist`, then marks it as a review build (see [Search engines](#search-engines)) |
 | `npm run preview:site` | Builds, then serves `website/dist` through Wrangler exactly as the Worker will, port 8787   |
 | `npm run check`        | Type and template check (`astro check`) and the LF line-ending check                        |
+| `npm run lighthouse`   | Builds, then scores four pages with Lighthouse in mobile mode; fails below budget (see [Page speed](#page-speed)) |
 | `npm run deploy:site`  | Builds, prints the Cloudflare account, deploys with `-c wrangler.site.jsonc`                |
 
 **Never run a bare `npx wrangler deploy`.** Always name the configuration.
@@ -109,6 +110,33 @@ hostname is therefore the whole switch.
 
 The cutover steps are in the guide:
 [Cutover](doc/guides/static-site-on-cloudflare.md#9-cutover-to-the-production-domain).
+
+## Page speed
+
+`npm run lighthouse` builds the site and runs [Lighthouse](https://developer.chrome.com/docs/lighthouse)
+against it in its default mobile mode: a mid-range phone on slow 4G. It scores the home page, the
+products index, a content page and the contact page, and exits nonzero if any category is below its
+budget:
+
+| Category       | Budget |
+| -------------- | ------ |
+| Performance    | 90     |
+| Accessibility  | 95     |
+| Best practices | 95     |
+| SEO            | 95     |
+
+Performance is the median of three runs (`-- --runs=1` for a quick pass). The full reports are
+written to `lighthouse-reports/`, one HTML file per page; open them in a browser for the details
+behind a score.
+
+The check needs Chrome installed on the machine. It starts its own headless Chrome with a temporary
+profile and its own local file server, uploads nothing, and is not part of `npm run check` or of the
+Cloudflare build. Run it before sending a design round for review and after adding anything that
+loads in the browser: a script, a font, a third-party tag.
+
+Lighthouse is a lab measurement. The numbers Google ranks on are Core Web Vitals from real visitors
+(largest paint within 2.5 s, response to input within 200 ms, layout shift under 0.1), available in
+Search Console once the production domain has traffic.
 
 ## Adding a page
 

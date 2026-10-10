@@ -38,6 +38,22 @@ shape, number of colors (1 to 10+), quantity needed (1-100, 100-500, 500-1,000, 
 application environments (indoor, outdoor, high contact area, heat, fire, cold, ice, water, extreme
 environments).
 
+## Performance ideas, not scheduled
+
+`npm run lighthouse` scores all tested pages 99 to 100 for performance in mobile mode, at 83 to
+214 KiB per page. These are held back until a problem is actually seen on a physical phone or tablet:
+
+| Idea                                                                    | Would help with                                  |
+| ----------------------------------------------------------------------- | ------------------------------------------------ |
+| Preload the two font files, or use one family instead of two            | Text appearing in the fallback font first; saves up to 25 KB |
+| Inline the CSS into each page                                           | Two fewer requests on first visit                |
+| Serve AVIF to browsers that support it                                  | Image weight on photo-heavy pages                |
+| Remove the blur effect on the sticky header                             | Scrolling that feels heavy on older phones       |
+
+The larger risk is what gets added later: Tag Manager, Ads tags, a consent banner and form spam
+protection each cost more than a whole page does today (T1, T2). Re-run the check when any of them
+goes in.
+
 ## Copy changes to confirm
 
 The home page text is the legacy text with these changes. Each needs the owner's yes or a correction.
@@ -53,6 +69,7 @@ The home page text is the legacy text with these changes. Each needs the owner's
 | Section headings ("What sets us apart", "Our products & services")  | Kept as small labels, with a new larger heading under each          | Page structure and search. **The larger headings are new copy.**                 |
 | Graphic Overlays card: same text as Agency & FCC Labels             | A short description of overlays                                     | The legacy text is a copy-paste. **New copy.**                                   |
 | Product card texts                                                  | Shortened to two or three lines each                                | Card length. Full text returns on each product page.                             |
+| Certifications button "More info"                                    | "View our certifications"                                           | Link text that names its destination (accessibility and search)                  |
 | "Quality" paragraph: "In search for machinery…that…requires?"       | Grammar corrected                                                   |                                                                                  |
 
 Other pages: the FAQ drops a duplicated shipping question; About and Contact keep the legacy text with
