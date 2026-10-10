@@ -1,0 +1,70 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+import CatalogGrid from "../../components/CatalogGrid.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import equipment from "../../assets/img/adhesa-printers2.jpg";
+
+const capabilities = (await getCollection("capabilities")).map((entry) => entry.data);
+const groups = [...new Set(capabilities.map((capability) => capability.group))];
+---
+
+<Base
+  title="Capabilities"
+  description="Adhesa Plate capabilities: screen printing, UV ink jet, thermal transfer, color matching, serializing and barcoding, laminating, dome coating, die, laser and plotter cutting, embossing and a full service art department."
+>
+  <PageHero
+    eyebrow="Capabilities"
+    title="Capabilities"
+    lead="We have the tools to do the job right: conventional and digital printing and cutting, combined to fit the volume and the detail your label needs."
+  />
+  <section class="section">
+    <div class="container layout">
+      <div class="groups">
+        {
+          groups.map((group) => (
+            <div>
+              <div class="section-head">
+                <h2>{group}</h2>
+              </div>
+              <CatalogGrid
+                entries={capabilities.filter((capability) => capability.group === group)}
+                columns={3}
+              />
+            </div>
+          ))
+        }
+      </div>
+      <Image
+        class="shot"
+        src={equipment}
+        alt="Adhesa Plate production equipment: UV printers, a laser cutter and a screen printing line"
+        widths={[480, 760, 1000]}
+        sizes="(min-width: 900px) 1000px, 92vw"
+        loading="lazy"
+      />
+    </div>
+  </section>
+  <CtaBand />
+</Base>
+
+<style>
+  .layout,
+  .groups {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4rem);
+  }
+  .groups .section-head {
+    margin-bottom: 1.25rem;
+  }
+  .groups h2 {
+    font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+  }
+  .shot {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+</style>

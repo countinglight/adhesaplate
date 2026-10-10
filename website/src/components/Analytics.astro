@@ -1,0 +1,23 @@
+---
+// Google Tag Manager, dormant until site.analytics.gtmId is set. Even then the
+// tag loads only on the production hostname, so review and local builds never
+// report traffic or need a consent banner.
+import { site } from "../site.config";
+
+const { gtmId } = site.analytics;
+---
+
+{
+  gtmId && (
+    <script is:inline define:vars={{ gtmId, host: site.productionHost }}>
+      if (location.hostname === host || location.hostname === "www." + host) {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+        const tag = document.createElement("script");
+        tag.async = true;
+        tag.src = "https://www.googletagmanager.com/gtm.js?id=" + gtmId;
+        document.head.appendChild(tag);
+      }
+    </script>
+  )
+}

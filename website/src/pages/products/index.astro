@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+import CatalogGrid from "../../components/CatalogGrid.astro";
+import CtaBand from "../../components/CtaBand.astro";
+
+const products = (await getCollection("products")).map((entry) => entry.data);
+const groups = [...new Set(products.map((product) => product.group))];
+---
+
+<Base
+  title="Products"
+  description="Custom labels, graphic overlays, membrane switches, nameplates and insulators from Adhesa Plate: warning, agency, barcode, dome and equipment labels, UL 969 certified."
+>
+  <PageHero
+    eyebrow="Products"
+    title="Products"
+    lead="Labels, graphic overlays, membrane switches and custom work, made to suit your application and certified where your industry requires it."
+  />
+  {
+    groups.map((group, index) => (
+      <section class:list={["section", index % 2 === 1 && "section--soft"]}>
+        <div class="container">
+          <div class="section-head">
+            <h2>{group}</h2>
+          </div>
+          <CatalogGrid
+            entries={products.filter((product) => product.group === group)}
+            columns={4}
+            fallbackIcon="badge"
+          />
+        </div>
+      </section>
+    ))
+  }
+  <CtaBand />
+</Base>

@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "adhesaplate-site-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 4321
+    },
+    {
+      "name": "adhesaplate-site",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "preview:site"],
+      "port": 8787
+    }
+  ]
+}

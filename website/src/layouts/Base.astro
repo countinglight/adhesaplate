@@ -1,0 +1,69 @@
+---
+import "@fontsource-variable/inter";
+import "@fontsource-variable/manrope";
+import "../styles/global.css";
+import Seo from "../components/Seo.astro";
+import Analytics from "../components/Analytics.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../site.config";
+
+interface Props {
+  title: string;
+  description?: string;
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { title, description, noindex, jsonLd } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1f4b" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <Seo title={title} description={description} noindex={noindex} jsonLd={jsonLd} />
+    <Analytics />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Any hostname other than production is a review or local build: say so
+         on the page. Detected at runtime, so the same build serves both. -->
+    <script is:inline define:vars={{ host: site.productionHost }}>
+      const name = location.hostname;
+      if (name !== host && name !== "www." + host) {
+        const badge = document.createElement("div");
+        badge.className = "review-badge";
+        badge.textContent = "Review build";
+        document.body.appendChild(badge);
+      }
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  .review-badge {
+    position: fixed;
+    left: 0.75rem;
+    bottom: 0.75rem;
+    z-index: 90;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background: rgb(6 18 41 / 0.82);
+    color: #fff;
+    font: 700 0.72rem/1.4 var(--font-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+</style>

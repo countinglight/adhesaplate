@@ -1,0 +1,95 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+import Icon from "../../components/Icon.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import { faqPage } from "../../lib/structured-data";
+
+const items = (await getCollection("faq")).map((entry) => ({ ...entry.data, id: entry.id }));
+const topics = [...new Set(items.map((item) => item.topic))];
+---
+
+<Base
+  title="FAQ"
+  description="Answers to common questions about ordering custom labels from Adhesa Plate: art proofs and files, minimums, turnaround, payment and shipping."
+  jsonLd={faqPage(items)}
+>
+  <PageHero eyebrow="FAQ" title="Frequently asked questions" lead="Artwork, orders, payment and shipping." />
+  <section class="section">
+    <div class="container topics">
+      {
+        topics.map((topic) => (
+          <section>
+            <h2>{topic}</h2>
+            <div class="items">
+              {items
+                .filter((item) => item.topic === topic)
+                .map((item) => (
+                  <details id={item.id}>
+                    <summary>
+                      <span>{item.question}</span>
+                      <Icon name="chevron" size={20} />
+                    </summary>
+                    <p>{item.answer}</p>
+                  </details>
+                ))}
+            </div>
+          </section>
+        ))
+      }
+    </div>
+  </section>
+  <CtaBand title="Still have a question?" text="Send us a note or give us a call. We are happy to help." />
+</Base>
+
+<style>
+  .topics {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3rem);
+    max-width: 52rem;
+  }
+  h2 {
+    font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+    margin-bottom: 1rem;
+  }
+  .items {
+    display: grid;
+    gap: 0.75rem;
+  }
+  details {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+  }
+  details[open] {
+    border-color: #c9dbf6;
+  }
+  summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.05rem 1.25rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--ink-900);
+    cursor: pointer;
+    list-style: none;
+  }
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  summary :global(svg) {
+    flex: none;
+    color: var(--blue-600);
+    transition: transform 0.2s ease;
+  }
+  details[open] summary :global(svg) {
+    transform: rotate(180deg);
+  }
+  details p {
+    padding: 0 1.25rem 1.2rem;
+  }
+</style>

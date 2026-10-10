@@ -1,0 +1,39 @@
+---
+// Every page's <head> metadata comes through here: title, description,
+// canonical, Open Graph, social card and optional JSON-LD. Canonical and
+// og:url always name the production origin (astro.config `site`), so the
+// review deployment never presents itself as the address to index.
+import { site } from "../site.config";
+import ogDefault from "../assets/img/adhesa-printers2.jpg";
+
+interface Props {
+  title: string;
+  description?: string;
+  // Set on pages that must stay out of the index even in production.
+  noindex?: boolean;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { title, description = site.defaultDescription, noindex = false, jsonLd } = Astro.props;
+
+const isHome = Astro.url.pathname === "/";
+const fullTitle = isHome ? title : `${title} | ${site.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(ogDefault.src, Astro.site);
+const blocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+---
+
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta name="twitter:card" content="summary_large_image" />
+
+{blocks.map((block) => <script type="application/ld+json" set:html={JSON.stringify(block)} />)}

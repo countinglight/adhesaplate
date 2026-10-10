@@ -1,0 +1,490 @@
+---
+import { Image } from "astro:assets";
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+import CatalogGrid from "../components/CatalogGrid.astro";
+import CtaBand from "../components/CtaBand.astro";
+import { organization } from "../lib/structured-data";
+import { href } from "../lib/links";
+import { quoteHref, site } from "../site.config";
+import building from "../assets/img/adhesa-plate.jpg";
+import equipment from "../assets/img/adhesa-printers2.jpg";
+import ul from "../assets/img/ul.jpg";
+import ce from "../assets/img/CE.png";
+
+const apart = [
+  {
+    icon: "badge",
+    title: "Our Specialty",
+    text: "Adhesa Plate specializes in the manufacturing and supplying of quality custom labels, product markings, graphic overlays, membrane switches, insulators and shields since 1954. Our products are UL 969 tested and approved, and our internal quality system is based on ISO 9001.",
+  },
+  {
+    icon: "shield",
+    title: "Quality",
+    text: "In search of machinery and equipment labels designed to meet the demanding performance requirements of industrial equipment? Adhesa Plate can help you find the right solution to your unique industrial equipment label application.",
+  },
+  {
+    icon: "layers",
+    title: "Durability",
+    text: "Whether you are looking for a UL approved warning label, or a durable graphic overlay for your device, Adhesa Plate can help you build the perfect label to suit your unique application.",
+  },
+  {
+    icon: "puzzle",
+    title: "Problem Solving",
+    text: "From medical equipment graphic overlays to laboratory labels, Adhesa Plate can help you find the right solution to your demanding medical label application.",
+  },
+] as const;
+
+const understand = [
+  { icon: "chat", title: "Needs", text: "Where the label lives, what it has to survive and what it has to say." },
+  { icon: "layers", title: "Materials", text: "The film, adhesive and finish that suit the surface and the environment." },
+  { icon: "pen", title: "Design", text: "Artwork, color and construction that identify your product." },
+] as const;
+
+const stats = [
+  { value: String(site.founded), label: "Serving manufacturers since" },
+  { value: "8,500+", label: "Projects completed" },
+  { value: "1,200+", label: "Happy clients" },
+  { value: "UL 969", label: "Tested and approved" },
+];
+
+// The legacy home page's "Our products & services" set, in its order.
+const featured = [
+  { title: "Membrane Switches", path: "/products/membrane-switches/", image: "embossed_membrane_switches.jpg", summary: "Graphic overlays in polycarbonate or polyester thin film combined with membrane circuitry. Seals a device from the front, with colorful graphics, display windows and embossed keypads." },
+  { title: "Warning Labels", path: "/products/warning-labels/", image: "ul_labels.jpg", summary: "Custom warning and caution labels certified under UL 969 and made to the ANSI standards for safety signs and labels." },
+  { title: "Industrial Equipment Labels", path: "/industries/industrial-equipment-mfg/", image: "metallic_ul_label.jpg", summary: "Aluminum foil, polycarbonate, polyester and vinyl, tested and certified under UL 969 for durability, in custom shapes and sizes." },
+  { title: "Agency & FCC Labels", path: "/products/agency-fcc-labels/", image: "imprintable_ul_labels.jpg", summary: "UL 969 certified for indoor and outdoor use and tested to the Canadian cUL standard. RoHS compliant." },
+  { title: "Graphic Overlays", path: "/products/graphic-overlays/", image: "custom_graphic_overlay.jpg", summary: "Durable polycarbonate and polyester overlays with deadfront and LED display windows, selective texture and embossing." },
+  { title: "Custom Application", path: "/products/custom-application/", image: "custom-application-adhesive-labels.jpg", summary: "Direct printing on metal cases, multi-layered acrylic templates, plastic event tickets and other unique work, with fast turnaround and low set up cost." },
+  { title: "Serializing & Barcoding", path: "/capabilities/serializing-barcoding/", image: "barcode-asset-labels-2.jpg", summary: "Sequential, human and machine readable numbers, static and sequential barcodes, QR or UID codes on a variety of label materials." },
+  { title: "Electronic Device Labels", path: "/industries/electronic-device-mfg/", image: "custom_shape_die_cut_labels.jpg", summary: "RoHS compliant labels certified under UL 969 for indoor and outdoor use, with an LSE adhesive option for powder coated surfaces." },
+  { title: "Dome Labels", path: "/products/dome-labels/", image: "custom_dome_labels.jpg", summary: "A .060” clear, non-yellowing urethane dome adds a high end 3-D look, is outdoor durable and can self-repair dents." },
+  { title: "Medical Device Labels", path: "/industries/medical-device-mfg/", image: "equipment_labels.jpg", summary: "From medical equipment graphic overlays to laboratory labels. Most are UL 969 certified; all are RoHS compliant." },
+  { title: "Materials", path: "/materials/", icon: "layers", summary: "Aluminum foil, polycarbonate, polyester and vinyl: four main materials tested and certified under UL 969 for durability." },
+  { title: "Full Service Art Department", path: "/capabilities/full-service-art-dept/", icon: "pen", summary: "Designers on staff can help create a label that will “identify your product”." },
+];
+---
+
+<Base
+  title="Adhesa Plate | Industrial Custom Label Printing and Design"
+  description={site.defaultDescription}
+  jsonLd={organization()}
+>
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">Welcome to Adhesa Plate</p>
+        <h1>We make <span class="hero__accent">amazing labels</span></h1>
+        <p class="lead">
+          Custom labels, product markings, graphic overlays and membrane switches, UL 969 tested and approved and
+          built in the Seattle area since {site.founded}.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href={quoteHref}>Get a free quote</a>
+          <a class="btn btn--ghost" href="/products/">
+            See all our products
+            <Icon name="arrow" size={18} />
+          </a>
+        </div>
+        <ul class="hero__trust" aria-label="Certifications and standards">
+          <li><Icon name="shield" size={18} /> UL 969 approved</li>
+          <li><Icon name="badge" size={18} /> ISO 9001 based quality system</li>
+          <li><Icon name="layers" size={18} /> RoHS compliant materials</li>
+        </ul>
+      </div>
+      <div class="hero__visual">
+        <Image
+          src={building}
+          alt="The Adhesa Plate building lit in blue and green at night"
+          widths={[480, 760, 1100]}
+          sizes="(min-width: 960px) 46vw, 92vw"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="hero__card">
+          <strong>{new Date().getFullYear() - site.founded}+ years</strong>
+          <span>of label manufacturing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">What sets us apart</p>
+        <h2>Labels built for demanding equipment</h2>
+      </div>
+      <ul class="grid grid--2">
+        {
+          apart.map((item) => (
+            <li class="card apart-card">
+              <span class="icon-tile">
+                <Icon name={item.icon} />
+              </span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+      <div class="btn-row apart-actions">
+        <a class="btn btn--brand" href="/capabilities/">View all services</a>
+        <a class="btn btn--outline" href={quoteHref}>Get a quote</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="container operate">
+      <div class="section-head">
+        <p class="eyebrow">About us</p>
+        <h2>How we operate</h2>
+        <p class="lead">
+          We understand that every industry is unique, and we always give our best for each client we work with.
+          Which is why we take so much time to understand:
+        </p>
+        <a class="card__link operate__more" href="/about-us/">
+          Our history
+          <Icon name="arrow" size={16} />
+        </a>
+      </div>
+      <ol class="operate__steps">
+        {
+          understand.map((step, index) => (
+            <li>
+              <span class="operate__num">{index + 1}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+    <div class="container">
+      <dl class="stats">
+        {
+          stats.map((stat) => (
+            <div>
+              <dt>{stat.label}</dt>
+              <dd>{stat.value}</dd>
+            </div>
+          ))
+        }
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head section-head--center">
+        <p class="eyebrow">Our products &amp; services</p>
+        <h2>Find the label for your application</h2>
+      </div>
+      <CatalogGrid entries={featured} columns={4} />
+      <div class="btn-row center-row">
+        <a class="btn btn--brand" href="/products/">View all products</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container tools">
+      <div class="tools__media">
+        <Image
+          src={equipment}
+          alt="Adhesa Plate production equipment: UV printers, a laser cutter and a screen printing line"
+          widths={[480, 760, 1000]}
+          sizes="(min-width: 960px) 46vw, 92vw"
+          loading="lazy"
+        />
+      </div>
+      <div class="section-head">
+        <p class="eyebrow">Capabilities</p>
+        <h2>We have the tools to do the job right</h2>
+        <p class="lead">
+          Screen printing, UV ink jet and thermal transfer, with die, laser and plotter cutting, dome coating,
+          embossing and laminating, all under one roof.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--brand" href="/capabilities/">See all of our capabilities</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container certs">
+      <div class="section-head">
+        <p class="eyebrow">Certifications</p>
+        <h2>Tested for durability and long life</h2>
+        <p class="lead">
+          Our UL tested products ensure durability and long life. We can confirm that the materials used to make
+          Adhesa Plate products are RoHS compliant.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--outline" href={href("/certifications/")}>More info</a>
+        </div>
+      </div>
+      <ul class="certs__marks">
+        <li><Image src={ul} alt="UL recognized component mark" width={76} height={76} loading="lazy" /></li>
+        <li><Image src={ce} alt="CE mark" width={76} height={76} loading="lazy" /></li>
+        <li class="certs__text">RoHS</li>
+        <li class="certs__text">REACH</li>
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    background:
+      radial-gradient(52rem 30rem at 92% -10%, rgb(34 211 238 / 0.55), transparent 62%),
+      radial-gradient(40rem 26rem at -8% 110%, rgb(59 130 246 / 0.55), transparent 60%),
+      var(--gradient-deep);
+  }
+  .hero__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding-block: clamp(3rem, 8vw, 6.5rem);
+  }
+  .hero__copy {
+    display: grid;
+    gap: 1.4rem;
+  }
+  .hero .eyebrow {
+    color: var(--cyan-300);
+  }
+  .hero h1 {
+    color: #fff;
+  }
+  .hero__accent {
+    background: linear-gradient(100deg, var(--cyan-300), #fff 55%, var(--amber-500));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero .lead {
+    color: rgb(255 255 255 / 0.86);
+    max-width: 34rem;
+  }
+  .hero__trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 1.4rem;
+    margin-top: 0.4rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: rgb(255 255 255 / 0.85);
+  }
+  .hero__trust li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .hero__trust :global(svg) {
+    color: var(--cyan-300);
+  }
+  .hero__visual {
+    position: relative;
+  }
+  .hero__visual :global(img) {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgb(255 255 255 / 0.22);
+    box-shadow: var(--shadow-lg);
+  }
+  .hero__card {
+    position: absolute;
+    left: -1rem;
+    bottom: -1.25rem;
+    display: grid;
+    padding: 0.9rem 1.2rem;
+    border-radius: var(--radius);
+    background: rgb(255 255 255 / 0.96);
+    color: var(--ink-700);
+    box-shadow: var(--shadow);
+    font-size: 0.88rem;
+    line-height: 1.3;
+  }
+  .hero__card strong {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .apart-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.1rem;
+  }
+  .apart-card div {
+    display: grid;
+    gap: 0.5rem;
+  }
+  .apart-actions,
+  .center-row {
+    margin-top: 2rem;
+  }
+  .center-row {
+    justify-content: center;
+  }
+
+  .operate {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: start;
+  }
+  .operate .section-head {
+    margin-bottom: 0;
+  }
+  .operate__more::after {
+    content: none;
+  }
+  .operate__steps {
+    display: grid;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .operate__steps li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding: 1.15rem 1.3rem;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+  }
+  .operate__steps p {
+    font-size: 0.98rem;
+    color: var(--ink-500);
+  }
+  .operate__num {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: var(--gradient-brand);
+    color: #fff;
+    font-family: var(--font-display);
+    font-weight: 800;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
+    gap: 1rem;
+    margin: clamp(2rem, 5vw, 3.5rem) 0 0;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border-radius: var(--radius-lg);
+    background: var(--gradient-deep);
+    color: #fff;
+    box-shadow: var(--shadow);
+  }
+  .stats div {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.2rem;
+  }
+  .stats dt {
+    font-size: 0.9rem;
+    color: rgb(255 255 255 / 0.8);
+  }
+  .stats dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  .tools {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .tools .section-head {
+    margin-bottom: 0;
+  }
+  .tools__media :global(img) {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+
+  .certs {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .certs .section-head {
+    margin-bottom: 0;
+  }
+  .certs__marks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .certs__marks li {
+    display: grid;
+    place-items: center;
+    min-height: 7rem;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+  }
+  .certs__marks :global(img) {
+    width: 4.75rem;
+    height: 4.75rem;
+    object-fit: contain;
+  }
+  .certs__text {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--ink-900);
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 960px) {
+    .hero__inner,
+    .operate,
+    .tools,
+    .certs {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .hero__card {
+      left: 0.75rem;
+      bottom: -1rem;
+    }
+  }
+  @media (max-width: 560px) {
+    .apart-card {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

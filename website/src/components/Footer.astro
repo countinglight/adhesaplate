@@ -1,0 +1,115 @@
+---
+import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
+import { nav, site } from "../site.config";
+
+const year = new Date().getFullYear();
+const { address } = site;
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <Logo />
+      <p>
+        Custom labels, product markings, graphic overlays, membrane switches, insulators and shields since {
+          site.founded
+        }.
+      </p>
+    </div>
+
+    <nav aria-label="Footer">
+      <h2>Explore</h2>
+      <ul class="site-footer__links">
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.path}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div>
+      <h2>Contact</h2>
+      <ul class="site-footer__contact">
+        <li>
+          <Icon name="phone" size={18} />
+          <a href={site.phone.href}>{site.phone.display}</a>
+        </li>
+        <li>
+          <Icon name="mail" size={18} />
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </li>
+        <li>
+          <Icon name="pin" size={18} />
+          <span>{address.street}, {address.city}, {address.region} {address.postalCode}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="container site-footer__legal">
+    <p>© {year} {site.legalName}. All rights reserved.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink-950);
+    color: rgb(255 255 255 / 0.72);
+    font-size: 0.96rem;
+  }
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 2.5rem;
+    padding-block: clamp(2.5rem, 6vw, 4rem);
+  }
+  .site-footer__brand {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+    max-width: 24rem;
+  }
+  .site-footer h2 {
+    margin-bottom: 0.9rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cyan-300);
+  }
+  .site-footer a {
+    color: rgb(255 255 255 / 0.85);
+    text-decoration: none;
+  }
+  .site-footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .site-footer__links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1.5rem;
+  }
+  .site-footer__contact {
+    display: grid;
+    gap: 0.7rem;
+  }
+  .site-footer__contact li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.6rem;
+    align-items: start;
+  }
+  .site-footer__contact :global(svg) {
+    margin-top: 0.25rem;
+    color: var(--cyan-400);
+  }
+  .site-footer__legal {
+    padding-block: 1.25rem 2.75rem;
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+    font-size: 0.86rem;
+    color: rgb(255 255 255 / 0.55);
+  }
+</style>

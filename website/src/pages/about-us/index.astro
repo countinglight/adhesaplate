@@ -1,0 +1,167 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import history from "../../assets/img/ap_history.jpg";
+
+const timeline = [
+  {
+    when: "1954",
+    text: "Adhesa Plate Manufacturing was started in Seattle, Washington by A.J. Mitchell, as a printing company which used offset presses to produce pressure sensitive foil labels. In the 1940s, aluminum foil was the first material used for labels and nameplates.",
+  },
+  {
+    when: "Mid 1960s",
+    text: "Pressure sensitive Mylar and vinyl materials entered the product marking industry. Adhesa Plate adapted to the industry change, while continuing to use a customized offset printing method.",
+  },
+  {
+    when: "1976",
+    text: "A.J. Mitchell's son, Craig Mitchell, became Vice-President to carry on the family business. Soon after, ultraviolet (UV) ink curing entered the industry and Adhesa Plate was quick to adopt it, making production of graphic overlays the most efficient.",
+  },
+  {
+    when: "1980s",
+    text: "Polycarbonate (Lexan) made its appearance and Adhesa Plate expanded to screen printing to take advantage of the new material. Computers provided the next big boost: Adhesa Plate created its own custom estimating system, and today the entire company uses computer technology from cost estimating to inventory control, prepress and the graphic art department.",
+  },
+  {
+    when: "1990",
+    text: "The philosophy of quality systems emerged. Adhesa Plate began its journey of creating a quality system and implementing integrated manufacturing, which guided the company through two consecutive years of 30% growth and into a new facility.",
+  },
+  {
+    when: "2000s",
+    text: "Computer-aided manufacturing: Adhesa Plate gained the capabilities to print and cut using digitally controlled equipment, in many cases eliminating the conventional films and cutting tools once required.",
+  },
+];
+---
+
+<Base
+  title="About Us"
+  description="Adhesa Plate has supported companies with low-volume, high-mix label needs since 1954, serving electronic device, industrial equipment, medical device and transportation equipment manufacturers."
+>
+  <PageHero
+    eyebrow="About us"
+    title="How is Adhesa Plate different?"
+    lead="Since 1954, Adhesa Plate has focused on supporting companies with low-volume, high-mix label needs."
+  />
+
+  <section class="section">
+    <div class="container split">
+      <div class="prose">
+        <p>
+          This business model supports big companies with a wide variety of products, and big companies wanting “just
+          in time” scheduled deliveries of smaller batches or prototypes. It also supports smaller or start-up
+          companies with low volume needs.
+        </p>
+        <p>
+          Adhesa Plate has designed its work flow utilizing automatic and semi-automatic equipment for higher volume
+          production, and computer-to-manufacturing (digital) equipment for lower volume and unique requirements.
+        </p>
+        <p>
+          As companies become more concerned about inventory levels, lower volume orders are becoming more popular.
+          Digital manufacturing with reduced setup times has made these lower volumes more affordable. Often the
+          digital processing can reduce or even eliminate non-recurring charges for further cost savings. Digital
+          processing can also produce products that conventional processing cannot, such as very fine detailed
+          imaging (UV inkjet) or very fine detailed cutting (laser).
+        </p>
+        <p>
+          There are times when a label starts out as a digitally produced product, but gets changed over to
+          conventional production as volume increases. Adhesa Plate has the flexibility and capability to do just
+          that, and to offer the best pricing with the most suitable solution for your needs.
+        </p>
+      </div>
+      <Image
+        class="photo"
+        src={history}
+        alt="Adhesa Plate in its early years"
+        widths={[360, 600]}
+        sizes="(min-width: 900px) 420px, 92vw"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <section class="section section--tint">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Our history</p>
+        <h2>Seven decades of adapting to new materials and methods</h2>
+      </div>
+      <ol class="timeline">
+        {
+          timeline.map((step) => (
+            <li>
+              <h3>{step.when}</h3>
+              <p>{step.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="lead closing">
+        Serving the electronic device, industrial equipment, medical device and transportation equipment
+        manufacturing industries, Adhesa Plate has become a company very efficient in the manufacturing of custom
+        labels, product markings, graphic overlays, insulators and shields.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Find out how we can help"
+    text="We hope to have the opportunity to add you to our list of valued customers."
+  />
+</Base>
+
+<style>
+  .split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 5vw, 4rem);
+    align-items: start;
+  }
+  .photo {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+  }
+  .timeline {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: 52rem;
+  }
+  .timeline li {
+    position: relative;
+    display: grid;
+    gap: 0.4rem;
+    padding: 0 0 2rem 2.25rem;
+    border-left: 2px solid #bcd6fb;
+    margin-left: 0.5rem;
+  }
+  .timeline li:last-child {
+    border-left-color: transparent;
+    padding-bottom: 0;
+  }
+  .timeline li::before {
+    content: "";
+    position: absolute;
+    left: -0.6rem;
+    top: 0.2rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    background: var(--gradient-brand);
+    box-shadow: 0 0 0 4px var(--surface-tint);
+  }
+  .timeline h3 {
+    color: var(--blue-700);
+  }
+  .closing {
+    max-width: 52rem;
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+  @media (max-width: 900px) {
+    .split {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

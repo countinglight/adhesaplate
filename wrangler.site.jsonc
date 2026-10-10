@@ -1,0 +1,23 @@
+{
+  // Marketing website. Static files only: Astro builds website/ into
+  // website/dist and this Worker serves that directory. Deployed by
+  // `npm run deploy:site` and by the Workers Build on a push to `deploy`.
+  "name": "adhesaplate-site",
+  "compatibility_date": "2026-09-05",
+  "assets": {
+    "directory": "./website/dist",
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "404-page",
+  },
+  // Only the custom domain serves the site. While this route is not the
+  // production hostname, scripts/mark-review-headers.js adds a noindex header
+  // to the build.
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [
+    {
+      "pattern": "adhesaplate.countinglight.com",
+      "custom_domain": true,
+    },
+  ],
+}

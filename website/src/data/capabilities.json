@@ -1,0 +1,15 @@
+[
+  { "id": "screen-printing", "title": "Screen Printing", "path": "/capabilities/screen-printing/", "group": "Printing", "icon": "printer" },
+  { "id": "uv-ink-jet-printing", "title": "UV Ink Jet Printing", "path": "/capabilities/uv-ink-jet-printing/", "group": "Printing", "icon": "printer" },
+  { "id": "thermal-transfer", "title": "Thermal Transfer", "path": "/thermal-transfer/", "group": "Printing", "icon": "printer" },
+  { "id": "color-matching", "title": "Color Matching", "path": "/capabilities/color-matching/", "group": "Printing", "icon": "palette" },
+  { "id": "serializing-barcoding", "title": "Serializing & Barcoding", "path": "/capabilities/serializing-barcoding/", "group": "Printing", "icon": "barcode", "summary": "Sequential, human readable and machine readable numbers, static and sequential barcodes, QR or UID codes on a variety of label materials and 3M adhesives." },
+  { "id": "laminating", "title": "Laminating", "path": "/capabilities/laminating/", "group": "Finishing", "icon": "layers" },
+  { "id": "dome-coating", "title": "Dome Coating", "path": "/capabilities/dome-coating/", "group": "Finishing", "icon": "drop" },
+  { "id": "embossing", "title": "Embossing", "path": "/capabilities/embossing/", "group": "Finishing", "icon": "layers" },
+  { "id": "die-cutting", "title": "Die Cutting", "path": "/capabilities/die-cutting/", "group": "Cutting", "icon": "cut" },
+  { "id": "laser-cutting", "title": "Laser Cutting", "path": "/capabilities/laser-cutting/", "group": "Cutting", "icon": "bolt" },
+  { "id": "plotter-cutting", "title": "Plotter Cutting", "path": "/capabilities/plotter-cutting/", "group": "Cutting", "icon": "cut" },
+  { "id": "combining-technologies", "title": "Combining Technologies", "path": "/capabilities/combining-technologies/", "group": "Design & engineering", "icon": "puzzle" },
+  { "id": "full-service-art-dept", "title": "Full Service Art Department", "path": "/capabilities/full-service-art-dept/", "group": "Design & engineering", "icon": "pen", "summary": "Designers on staff can help create a label that will “identify your product”. Because of the technical nature, most artwork is supplied by the customer." }
+]

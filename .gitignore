@@ -1,0 +1,21 @@
+# dependencies
+node_modules/
+
+# Astro build output and generated types
+dist/
+.astro/
+
+# Wrangler local state (dev server temp files)
+.wrangler/
+
+# editors and OS
+.history/
+.DS_Store
+
+# local env files
+.env
+.env.*
+!.env.example
+
+# debug
+npm-debug.*

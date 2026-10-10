@@ -1,0 +1,120 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+import Icon from "../../components/Icon.astro";
+import { quoteHref, site } from "../../site.config";
+
+const { address } = site;
+const fullAddress = `${address.street}, ${address.city}, ${address.region} ${address.postalCode}`;
+const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
+const checklist = [
+  "Is the label used indoor or outdoor?",
+  "Is the label application in an environment with extreme high or low temperature?",
+  "What type of surface is the label applied to? (Example: metal, plastic, powder coated paint, textured, smooth…)",
+  "Is the label application in a high contact area?",
+  "How many colors?",
+  "What is the size and shape of the label?",
+  "What quantity? (Example: 1-500, 100-2500, over 2500…)",
+];
+---
+
+<Base
+  title="Contact"
+  description={`Contact Adhesa Plate for a quote or a consultation on custom labels and graphic overlays. Call ${site.phone.display} or e-mail ${site.email}. ${fullAddress}.`}
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Contact us"
+    lead="Thank you for your interest in Adhesa Plate Mfg. Our label experts are available for a consultation on which materials make the best labels for your application."
+  />
+  <section class="section">
+    <div class="container layout">
+      <ul class="ways">
+        <li class="card">
+          <span class="icon-tile"><Icon name="phone" /></span>
+          <h2>Phone</h2>
+          <a href={site.phone.href}>{site.phone.display}</a>
+          <a href={site.tollFree.href}>Toll free {site.tollFree.display}</a>
+        </li>
+        <li class="card">
+          <span class="icon-tile"><Icon name="mail" /></span>
+          <h2>Email</h2>
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+          <a href={`mailto:${site.artEmail}`}>Art files: {site.artEmail}</a>
+        </li>
+        <li class="card">
+          <span class="icon-tile"><Icon name="pin" /></span>
+          <h2>Location</h2>
+          <address>{address.street}<br />{address.city}, {address.region} {address.postalCode}</address>
+          <a href={mapsHref} rel="noopener">Open in Maps</a>
+        </li>
+      </ul>
+
+      <div class="quote card">
+        <h2>Requesting a quote</h2>
+        <p>Please review and include the details listed below when submitting a request for quote:</p>
+        <ul class="quote__list">
+          {
+            checklist.map((item) => (
+              <li>
+                <Icon name="shield" size={18} />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+        <div class="btn-row">
+          <a class="btn btn--primary" href={quoteHref}>Email a quote request</a>
+        </div>
+        <p class="quote__privacy">
+          Your information is private. It is used only to answer your request and is never sold or passed to third
+          parties.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .layout {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .ways {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+  .ways h2,
+  .quote h2 {
+    font-size: 1.3rem;
+  }
+  .ways a {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+  address {
+    font-style: normal;
+  }
+  .quote {
+    gap: 1.1rem;
+    background: var(--gradient-soft);
+  }
+  .quote__list {
+    display: grid;
+    gap: 0.65rem;
+  }
+  .quote__list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.6rem;
+    align-items: start;
+  }
+  .quote__list :global(svg) {
+    margin-top: 0.25rem;
+    color: var(--cyan-500);
+  }
+  .quote__privacy {
+    font-size: 0.88rem;
+  }
+</style>

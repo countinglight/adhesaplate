@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+import CatalogGrid from "../../components/CatalogGrid.astro";
+import CtaBand from "../../components/CtaBand.astro";
+
+const industries = (await getCollection("industries")).map((entry) => entry.data);
+---
+
+<Base
+  title="Industries"
+  description="Adhesa Plate serves medical device, electronic device, industrial equipment and energy device manufacturers with durable, UL 969 approved labels and graphic overlays."
+>
+  <PageHero
+    eyebrow="Industries"
+    title="Industries"
+    lead="Our experienced engineering and diverse technical capabilities, along with UL 969 approved label testing, allow us to serve many industries with durable products and top quality service."
+  />
+  <section class="section">
+    <div class="container">
+      <CatalogGrid entries={industries} columns={4} />
+      <p class="lead note">
+        Adhesa Plate continuously works on finding solutions for your demanding label application by combining new
+        and traditional production methods and fabricating technologies, which enable us to offer cost saving
+        quality products to our customers.
+      </p>
+    </div>
+  </section>
+  <CtaBand />
+</Base>
+
+<style>
+  .note {
+    max-width: 52rem;
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+</style>

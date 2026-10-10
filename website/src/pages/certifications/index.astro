@@ -1,0 +1,228 @@
+---
+import { Image } from "astro:assets";
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+import CtaBand from "../../components/CtaBand.astro";
+import ul from "../../assets/img/ul.jpg";
+
+// Section ids match the anchors the legacy menu links to
+// (/certifications/#ul, #ul969, #reach, #rohs, #conflict, #mil).
+const sections = [
+  { id: "ul", label: "UL" },
+  { id: "ul969", label: "UL 969" },
+  { id: "reach", label: "REACH" },
+  { id: "rohs", label: "RoHS" },
+  { id: "conflict", label: "Conflict Minerals" },
+  { id: "mil", label: "MIL Specs" },
+];
+
+const constructions = [
+  {
+    name: "AdhesaLex",
+    kind: "Polycarbonate labels",
+    detail: "Thickness range from .005” to .020”. Supplied with either 2 mil (3M467) or 5 mil (3M468) adhesives.",
+    use: "Indoor use",
+  },
+  {
+    name: "AdhesaLex-LSE",
+    kind: "Polycarbonate labels",
+    detail: "Thickness range from .005” to .020”. Supplied with 3M 300 Low Surface Energy adhesives.",
+    use: "Indoor & outdoor use",
+  },
+  {
+    name: "AdhesaFoil",
+    kind: "Thin aluminum foil labels",
+    detail: "3 mil and 5 mil foils. Supplied with either 2 mil (3M467) or 5 mil (3M468) adhesives.",
+    use: "Indoor use",
+  },
+  {
+    name: "AdhesaTherm",
+    kind: "Polyester labels",
+    detail:
+      "2 mil polyester with 3M 350 LSE adhesives. Evaluated by UL for additional printing by the end user with a thermal transfer printer and resin ribbon.",
+    use: "Indoor & outdoor use",
+  },
+  {
+    name: "AdhesaFlex",
+    kind: "Polyester and vinyl labels",
+    detail:
+      "Clear, silver and white polyester and white vinyl, with an acrylic adhesive for smooth high and low surface energy materials. Available with a matte or gloss polyester over-laminate.",
+    use: "See UL file",
+  },
+];
+---
+
+<Base
+  title="Certifications"
+  description="Adhesa Plate certifications: UL Authorized Label Supplier (PGAA File LP1964), UL 969 Marking and Labeling Systems (PGDQ2 File MH12483), REACH, RoHS, conflict minerals and MIL specs for nameplates."
+>
+  <PageHero
+    eyebrow="Certifications"
+    title="Certifications"
+    lead="Our UL tested products ensure durability and long life. We can confirm that the materials used to make Adhesa Plate products are RoHS compliant."
+  />
+
+  <section class="section">
+    <div class="container layout">
+      <nav class="toc" aria-label="On this page">
+        <ul class="chip-list">
+          {
+            sections.map((section) => (
+              <li>
+                <a class="chip" href={`#${section.id}`}>
+                  {section.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <article class="prose">
+        <h2 id="ul" class="with-mark">
+          <Image src={ul} alt="" width={44} height={44} loading="lazy" />
+          Underwriters Laboratory (UL)
+        </h2>
+        <h3>PGAA Authorized Label Suppliers Program, File # LP1964</h3>
+        <ul>
+          <li>PGDQ2 – Marking and Labeling Systems – Component</li>
+          <li>PGGU2 – Marking and Labeling Systems Materials – Component</li>
+          <li>PGJI2 – Printing Materials – Component</li>
+        </ul>
+        <h3>PGDQ2 Marking and Labeling Systems – Component, File # MH12483</h3>
+      </article>
+
+      <ul class="grid grid--3 constructions">
+        {
+          constructions.map((item) => (
+            <li class="card">
+              <h3>{item.name}</h3>
+              <p class="kind">{item.kind}</p>
+              <p>{item.detail}</p>
+              <span class="chip">{item.use}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <article class="prose">
+        <h2 id="ul969">Underwriters Laboratory (UL 969)</h2>
+        <p>
+          The nameplate and label constructions that Adhesa Plate has recognition for under Underwriters Laboratories
+          Marking and Labeling Systems – Component (standard UL 969) are in file # MH12483. Adhesa Plate has UL
+          recognition for pressure sensitive labels as follows:
+        </p>
+        <ul>
+          <li>
+            <strong>Printed polycarbonate (Lexan) labels</strong> (AdhesaLex and AdhesaLex LSE). Minimum temperature
+            -40°C (-40°F), maximum up to 80°C (176°F). AdhesaLex LSE is suitable for indoor and outdoor use and for
+            powder paint, polypropylene, polyethylene and other low surface energy plastics.
+          </li>
+          <li>
+            <strong>Printed polyester (Mylar) labels</strong> (AdhesaFlex-Pe and AdhesaTherm). For indoor and outdoor
+            use on smooth or textured surfaces, with excellent high temperature resistance and adhesion to low
+            surface energy plastics and powder coats. Maximum temperature from 60°C (140°F) to 125°C (257°F).
+          </li>
+          <li>
+            <strong>Vinyl labels</strong> (AdhesaFlex-Ve). White vinyl with matte or gloss polyester overlaminates,
+            suitable where exposed to high humidity or occasional exposure to water.
+          </li>
+          <li>
+            <strong>Printed aluminum labels</strong> (AdhesaFoil). Aluminum between .003” and .005” with 3M467 and
+            3M468 adhesive. Maximum temperature 60°C (140°F).
+          </li>
+        </ul>
+        <p>UL also tests labels in accordance with the Canadian Standard for labels.</p>
+
+        <h2 id="reach">REACH</h2>
+        <p>
+          Registration, Evaluation, Authorization and Restriction of Chemicals is a regulation of the European Union,
+          adopted to improve the protection of human health and the environment from the risks that can be posed by
+          chemicals.
+        </p>
+        <p>
+          We can confirm that our suppliers have certified that the materials we purchase from them to manufacture
+          Adhesa Plate products do not contain the SVHC chemicals on the REACH list in reportable quantities.
+        </p>
+
+        <h2 id="rohs">RoHS</h2>
+        <p>
+          The RoHS Directive bans the placing on the EU market of new electrical and electronic equipment containing
+          more than the agreed levels of lead, cadmium, mercury, hexavalent chromium, PBB and PBDE flame retardants.
+        </p>
+        <p>
+          Adhesa Plate's labels are compliant per the RoHS EU Directive 2011/65/EC (RoHS2). We can confirm that our
+          suppliers have certified that the materials we purchase from them are RoHS compliant.
+        </p>
+        <p class="fine">
+          We do not conduct material analysis of our raw materials; we rely on the written statements of our
+          material suppliers. None of the materials named in these directives are knowingly used or intentionally
+          added during manufacturing, however trace amounts may be present in the environment.
+        </p>
+
+        <h2 id="conflict">Conflict Minerals</h2>
+        <p>
+          Even though Adhesa Plate is not a public company, we are pleased to announce that our products do not
+          contain conflict minerals originating from the Democratic Republic of Congo or its adjoining countries. We
+          have written assurances from our suppliers that their materials comply with the Dodd-Frank “Conflict
+          Minerals” law.
+        </p>
+        <p>
+          Adhesa Plate supports the objectives of this law and will not knowingly source raw materials from suppliers
+          who use conflict minerals.
+        </p>
+
+        <h2 id="mil">MIL Specs for Nameplates</h2>
+        <ul>
+          <li>Mil-M-43719 (adhesive backed markings, rolls or sheets). Type I: pressure sensitive adhesive.</li>
+          <li>Mil-P-19834 (aluminum foil .003” thick). Type I: pressure sensitive adhesive.</li>
+          <li>
+            Mil-P-15024 (aluminum, brass and stainless steel). Type A: etched and color filled. Type E: printed. Type
+            G: aluminum foil. Type H: Metalphoto.
+          </li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <CtaBand
+    title="Need a certified label?"
+    text="Tell us the standard your product has to meet and we will recommend a recognized construction."
+  />
+</Base>
+
+<style>
+  .layout {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+  }
+  .with-mark {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0;
+  }
+  .with-mark :global(img) {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+  .constructions .card {
+    height: 100%;
+  }
+  .constructions .chip {
+    align-self: flex-start;
+    margin-top: auto;
+    background: var(--surface-tint);
+    border-color: transparent;
+    color: var(--blue-700);
+    font-size: 0.85rem;
+  }
+  .kind {
+    font-weight: 600;
+    color: var(--ink-700) !important;
+  }
+  .fine {
+    font-size: 0.92rem;
+    color: var(--ink-500);
+  }
+</style>

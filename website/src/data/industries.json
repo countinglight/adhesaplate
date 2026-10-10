@@ -1,0 +1,6 @@
+[
+  { "id": "medical-device-mfg", "title": "Medical Device Mfg", "path": "/industries/medical-device-mfg/", "icon": "pulse", "summary": "From medical equipment graphic overlays to laboratory labels, Adhesa Plate can help you find the right solution to your demanding medical label application. Most labels are certified under UL 969 (File #MH12483). All are RoHS compliant." },
+  { "id": "electronic-device-mfg", "title": "Electronic Device Mfg", "path": "/industries/electronic-device-mfg/", "icon": "chip", "summary": "RoHS compliant labels certified under UL 969 (File #MH12483) for indoor and outdoor use, and under the UL Authorized Label Supplier Program (PGAA File #LP1964). Available with an LSE adhesive for powder coated surfaces." },
+  { "id": "industrial-equipment-mfg", "title": "Industrial Equipment Mfg", "path": "/industries/industrial-equipment-mfg/", "icon": "gear", "summary": "The most durable label materials available. Aluminum foil, polycarbonate, polyester and vinyl are tested and certified under UL 969 for durability, with colorful graphics and custom shapes and sizes." },
+  { "id": "energy-device-mfg", "title": "Energy Device Mfg", "path": "/industries/energy-device-mfg/", "icon": "bolt", "summary": "Adhesa Plate can help you find the right solution to your energy device label application." }
+]

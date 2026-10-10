@@ -1,0 +1,29 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+import CatalogGrid from "../../components/CatalogGrid.astro";
+import CtaBand from "../../components/CtaBand.astro";
+
+const materials = (await getCollection("materials")).map((entry) => entry.data);
+---
+
+<Base
+  title="Materials"
+  description="Label materials used by Adhesa Plate: polycarbonate (Lexan), polyester (Mylar), vinyl, aluminum and metallics, adhesives, films and foams, tested and certified under UL 969."
+>
+  <PageHero
+    eyebrow="Materials"
+    title="Materials"
+    lead="Adhesa Plate uses the most durable label materials in the production of all of our labels and graphic overlays. Our four main label materials are tested and certified under UL 969 PGDQ2 Component – Marking and Labeling Systems for durability."
+  />
+  <section class="section">
+    <div class="container">
+      <CatalogGrid entries={materials} columns={3} />
+    </div>
+  </section>
+  <CtaBand
+    title="Not sure which material fits?"
+    text="Our label experts are available for a consultation on which materials make the best labels for your application."
+  />
+</Base>

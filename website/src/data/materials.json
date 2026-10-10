@@ -1,0 +1,7 @@
+[
+  { "id": "polycarbonate-lexan", "title": "Polycarbonate (Lexan)", "path": "/materials/polycarbonate-lexan/", "icon": "layers" },
+  { "id": "polyester-mylar", "title": "Polyester (Mylar)", "path": "/materials/polyester-mylar/", "icon": "layers" },
+  { "id": "vinyl-2", "title": "Vinyl", "path": "/materials/vinyl-2/", "icon": "layers" },
+  { "id": "aluminum-metallics", "title": "Aluminum & Metallics", "path": "/materials/aluminum-metallics/", "icon": "layers" },
+  { "id": "adhesive-film-foam", "title": "Adhesive, Film & Foam", "path": "/materials/adhesive-film-foam/", "icon": "layers" }
+]

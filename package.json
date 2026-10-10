@@ -1,0 +1,20 @@
+{
+  "name": "adhesaplate",
+  "private": true,
+  "description": "Adhesa Plate website and client-side apps, deployed to Cloudflare Workers",
+  "license": "GPL-3.0-only",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "workspaces": [
+    "website"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w website",
+    "build:site": "npm run build -w website && node ./scripts/mark-review-headers.js",
+    "check": "npm run check -w website && npm run line-endings:check",
+    "line-endings:check": "node ./scripts/check-line-endings.js",
+    "preview:site": "npm run build:site && npx wrangler@4.129.0 dev -c wrangler.site.jsonc",
+    "deploy:site": "npm run build:site && npx wrangler@4.129.0 whoami && npx wrangler@4.129.0 deploy -c wrangler.site.jsonc"
+  }
+}

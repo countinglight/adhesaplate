@@ -1,0 +1,80 @@
+---
+// Card grid for a catalog collection (products, industries, materials,
+// capabilities). Entries with a photo get a picture card, the rest an icon.
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import { href, isBuilt } from "../lib/links";
+import { image } from "../lib/images";
+
+interface Entry {
+  title: string;
+  path: string;
+  summary?: string;
+  image?: string;
+  icon?: string;
+}
+interface Props {
+  entries: Entry[];
+  columns?: 3 | 4;
+  fallbackIcon?: string;
+}
+const { entries, columns = 3, fallbackIcon = "layers" } = Astro.props;
+---
+
+<ul class:list={["grid", `grid--${columns}`]}>
+  {
+    entries.map((entry) => (
+      <li class:list={["card", "catalog-card", entry.image && "catalog-card--photo"]}>
+        {entry.image ? (
+          <div class="catalog-card__photo">
+            <Image
+              src={image(entry.image)}
+              alt={`${entry.title} made by Adhesa Plate`}
+              widths={[240, 380]}
+              sizes="(min-width: 700px) 240px, 60vw"
+              loading="lazy"
+            />
+          </div>
+        ) : (
+          <span class="icon-tile icon-tile--soft">
+            <Icon name={(entry.icon ?? fallbackIcon) as any} />
+          </span>
+        )}
+        <h3>{entry.title}</h3>
+        {entry.summary && <p>{entry.summary}</p>}
+        <a class="card__link" href={href(entry.path)}>
+          Learn more
+          <Icon name={isBuilt(entry.path) ? "arrow" : "external"} size={16} />
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .catalog-card {
+    height: 100%;
+  }
+  .catalog-card__photo {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 3;
+    margin: calc(-1 * clamp(1.25rem, 2.4vw, 1.75rem));
+    margin-bottom: 0.25rem;
+    padding: 1rem;
+    border-radius: var(--radius) var(--radius) 0 0;
+    background: linear-gradient(160deg, #fff 30%, var(--surface-tint) 100%);
+    border-bottom: 1px solid var(--line);
+    overflow: hidden;
+  }
+  .catalog-card__photo :global(img) {
+    width: auto;
+    max-height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    transition: transform 0.3s ease;
+  }
+  .catalog-card:hover .catalog-card__photo :global(img) {
+    transform: scale(1.04);
+  }
+</style>

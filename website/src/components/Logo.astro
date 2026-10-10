@@ -1,0 +1,76 @@
+---
+// Vector redraw of the legacy raster logo (src/assets/img/logo-white-legacy.png):
+// the blue tile, the "Adhesa • Plate" wordmark and the "Custom Labels" line.
+// The wordmark is live text in the heading face, so it stays sharp at any size.
+import { site } from "../site.config";
+
+interface Props {
+  tone?: "light" | "dark";
+}
+const { tone = "light" } = Astro.props;
+---
+
+<span class:list={["logo", `logo--${tone}`]}>
+  <svg class="logo__mark" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true">
+    <defs>
+      <linearGradient id="logo-tile" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#3b82f6"></stop>
+        <stop offset="1" stop-color="#22d3ee"></stop>
+      </linearGradient>
+    </defs>
+    <rect x="1" y="1" width="38" height="38" rx="9" fill="url(#logo-tile)"></rect>
+    <rect x="9" y="9" width="22" height="22" rx="4.5" fill="#fff" fill-opacity=".9"></rect>
+    <path d="M31 22v4.5a4.5 4.5 0 0 1-4.5 4.5H22z" fill="#0b1f4b" fill-opacity=".28"></path>
+  </svg>
+  <span class="logo__text">
+    <span class="logo__name">Adhesa <span class="logo__dot">•</span> Plate</span>
+    <span class="logo__tag">{site.tagline}</span>
+  </span>
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    line-height: 1;
+  }
+  .logo__mark {
+    flex: none;
+    border-radius: 9px;
+    box-shadow: 0 4px 14px rgb(34 211 238 / 0.35);
+  }
+  .logo__text {
+    display: grid;
+    gap: 0.2rem;
+  }
+  .logo__name {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.28rem;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  .logo__dot {
+    color: var(--cyan-400);
+  }
+  .logo__tag {
+    font-size: 0.72rem;
+    font-style: italic;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    justify-self: end;
+  }
+  .logo--light .logo__name {
+    color: #fff;
+  }
+  .logo--light .logo__tag {
+    color: var(--cyan-300);
+  }
+  .logo--dark .logo__name {
+    color: var(--ink-900);
+  }
+  .logo--dark .logo__tag {
+    color: var(--blue-600);
+  }
+</style>
