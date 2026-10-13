@@ -19,6 +19,7 @@ const built = new Set([
   "/faq/",
   "/certifications/",
   "/contact-us/",
+  "/blog/",
   ...Object.values(migrated).map((frontmatter) => frontmatter.path),
 ]);
 

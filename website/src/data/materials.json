@@ -1,7 +1,37 @@
 [
-  { "id": "polycarbonate-lexan", "title": "Polycarbonate (Lexan)", "path": "/materials/polycarbonate-lexan/", "icon": "layers" },
-  { "id": "polyester-mylar", "title": "Polyester (Mylar)", "path": "/materials/polyester-mylar/", "icon": "layers" },
-  { "id": "vinyl-2", "title": "Vinyl", "path": "/materials/vinyl-2/", "icon": "layers" },
-  { "id": "aluminum-metallics", "title": "Aluminum & Metallics", "path": "/materials/aluminum-metallics/", "icon": "layers" },
-  { "id": "adhesive-film-foam", "title": "Adhesive, Film & Foam", "path": "/materials/adhesive-film-foam/", "icon": "layers" }
+  {
+    "id": "polycarbonate-lexan",
+    "title": "Polycarbonate (Lexan)",
+    "path": "/materials/polycarbonate-lexan/",
+    "icon": "layers",
+    "summary": "CSA and UL 969 approved; Adhesalex (Poly-carbonate) Use: Indoor or outdoor. Graphic front panels, membrane switches, keyboard overlays, LED and LCD display overlays, computer ID labels, shielding..."
+  },
+  {
+    "id": "polyester-mylar",
+    "title": "Polyester (Mylar)",
+    "path": "/materials/polyester-mylar/",
+    "icon": "layers",
+    "summary": "CSA and UL 969 approved; Adhesaflex PC/PW/PS (Polyester) Use: Indoor or outdoor. Decals, parking permits, product identification labels, asset tags, inventory tags, imprintable labels, insulators..."
+  },
+  {
+    "id": "vinyl-2",
+    "title": "Vinyl",
+    "path": "/materials/vinyl-2/",
+    "icon": "layers",
+    "summary": "UL 969 approved; Adhesaflex-Ve Use: Indoor or outdoor. Decals, warning signs, instruction labels, product identification, transferable labels, destructible labels, window permits or window clings..."
+  },
+  {
+    "id": "aluminum-metallics",
+    "title": "Aluminum & Metallics",
+    "path": "/materials/aluminum-metallics/",
+    "icon": "layers",
+    "summary": "CSA and UL 969 approved; Adhesafoil. Use: Product identification, inventory tags, asset labels, warning signs. Qualities: Indoor or Outdoor, 3M permanent adhesives available. Adhesa Plate has the..."
+  },
+  {
+    "id": "adhesive-film-foam",
+    "title": "Adhesive, Film & Foam",
+    "path": "/materials/adhesive-film-foam/",
+    "icon": "layers",
+    "summary": "Adhesive, Film, & Foam Besides the typical graphic overlays or product markings, Adhesa Plate also manufactures other adhesive backed products. We have a variety of material, adhesive, film, and..."
+  }
 ]

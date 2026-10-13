@@ -28,7 +28,7 @@ const pages = defineCollection({
       title: z.string(),
       description: z.string().max(200),
       path: z.string().startsWith("/").endsWith("/"),
-      section: z.enum(["products", "industries", "materials", "capabilities", "blog"]),
+      section: z.enum(["products", "industries", "materials", "capabilities", "blog", "utility"]),
       image: image().optional(),
       imageAlt: z.string().optional(),
       date: z.coerce.date().optional(),

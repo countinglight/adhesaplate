@@ -1,0 +1,18 @@
+---
+title: "Medical device labeling in the news: FDA study"
+description: "The U.S. Food and Drug Administration (FDA) provides precise guidelines for pharmaceutical labeling, from what information must be included to how it is laid out – even the font size required. So..."
+path: "/medical-device-labeling-in-the-news-fda-study/"
+section: "blog"
+source: "WordPress export, 2026-10-12"
+date: "2015-07-28"
+---
+
+The U.S. Food and Drug Administration (FDA) provides precise guidelines for pharmaceutical labeling, from what information must be included to how it is laid out – even the font size required. So, these labels are largely standardized. Contrast that with labels for medical devices, which are somewhat regulated under 21 CFR 801 – but in less detail than pharmaceuticals. The FDA therefore decided to study the medical device industry to determine how labeling can become more standardized – and how that might benefit healthcare providers to understand and explain risks and benefits of a particular device to potential users. To [quote the FDA](http://www.raps.org/Regulatory-Focus/News/2015/04/06/21899/How-can-Medical-Device-Labeling-be-Standardized-FDA-Study-Aims-to-Find-Out/#sthash.ZPJHbX7q.dpuf), there exists a “growing need for medical device labeling to be delivered in a clear, concise and readily accessible format so that patients, caregivers and healthcare providers may access and utilize device labeling as efficiently and effectively as possible.”
+
+## Another medical device label issue
+
+Because labeling formats differ, it is more difficult for patients to compare and contrast information between products. Plus, because people tend to use medical devices for a longer period of time than one month (a typical usage period for a bottle of prescribed medicine), warning and usage labels can fade or otherwise become hard to read. Because of these challenges, the FDA began a pilot study in September 2014. Using two hospitals and several dozen health care professionals as a test, they started studying 12 device labeling standards to determine what is most effective. One potential solution, first officially discussed in April 2013, involved the creation of standardized symbols to be used in medical device labels. Another idea involves an online database of devices used in home healthcare. The study is being overseen by the FDA’s Entrepreneurs-in-Residence.
+
+## What do new standards for medical device labels mean for you?
+
+As a medical device professional, you’re probably feeling some concern over potentially rigid standards – and that’s only natural. As early as May 2013, device spokespersons have [requested some flexibility](http://www.raps.org/focus-online/news/news-article-view/article/3487/industry-to-fda-give-us-flexibility-on-proposed-device-labeling-standards.aspx) from the FDA as they create standards – in part because there is such a broad range of medical devices that one set of standards can’t work for all types. Industry experts also point out that laboratory-use-only devices are quite different from home healthcare ones, and should be exempt from this standardization. Manufacturer Johnson & Johnson also brought up a practical concern. If standards require packaging near a sterile device, this could affect sterilization as well as shipping requirements. This issue is unlikely to be fully resolved any time soon, but you can [count on Adhesa Plate to fulfill your medical device label needs](/industries/medical-device-mfg/), both now and in the future as standards evolve. If you have questions or want to talk about your labeling needs, call 1-800-634-9701 now or email us at [sales@adhesaplate.com](mailto:sales@adhesaplate.com)

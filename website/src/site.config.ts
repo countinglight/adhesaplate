@@ -41,5 +41,6 @@ export const nav = [
   { label: "About", path: "/about-us/" },
   { label: "FAQ", path: "/faq/" },
   { label: "Certifications", path: "/certifications/" },
+  { label: "Blog", path: "/blog/" },
   { label: "Contact", path: "/contact-us/" },
 ] as const;

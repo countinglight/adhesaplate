@@ -1,22 +1,162 @@
 [
-  { "id": "agency-fcc-labels", "title": "Agency & FCC Labels", "path": "/products/agency-fcc-labels/", "group": "Labels", "image": "imprintable_ul_labels.jpg", "summary": "Certified under UL Marking & Labeling Systems – Component PGDQ2 (UL 969), File #MH12483, for indoor and outdoor use and tested to the Canadian cUL standard. RoHS compliant, and available with an LSE adhesive for powder coated surfaces." },
-  { "id": "back-panel-labels", "title": "Back Panel Labels", "path": "/products/back-panel-labels/", "group": "Labels" },
-  { "id": "barcode-qr-code-labels", "title": "Barcode & QR Code Labels", "path": "/products/barcode-qr-code-labels/", "group": "Labels", "image": "barcode-asset-labels-2.jpg" },
-  { "id": "custom-shape-labels", "title": "Custom Shape Labels", "path": "/products/custom-shape-labels/", "group": "Labels", "image": "custom_shape_die_cut_labels.jpg" },
-  { "id": "dome-labels", "title": "Dome Labels", "path": "/products/dome-labels/", "group": "Labels", "image": "custom_dome_labels.jpg", "summary": "Domed urethane coated labels made from white, clear, chrome silver and brushed silver polyester. A .060” clear, non-yellowing urethane coating adds a high end 3-D look, is outdoor durable and can self-repair dents." },
-  { "id": "equipment-labels", "title": "Equipment Labels", "path": "/products/equipment-labels/", "group": "Labels", "image": "equipment_labels.jpg" },
-  { "id": "imprintable-labels", "title": "Imprintable Labels", "path": "/products/imprintable-labels/", "group": "Labels" },
-  { "id": "id-labels", "title": "ID Labels", "path": "/products/id-labels/", "group": "Labels" },
-  { "id": "instruction-labels", "title": "Instruction Labels", "path": "/products/instruction-labels/", "group": "Labels" },
-  { "id": "variable-data-labels", "title": "Variable Data Labels", "path": "/products/variable-data-labels/", "group": "Labels" },
-  { "id": "vinyl-cut-graphics-labels", "title": "Vinyl Cut Graphics Labels", "path": "/products/vinyl-cut-graphics-labels/", "group": "Labels" },
-  { "id": "warning-labels", "title": "Warning Labels", "path": "/products/warning-labels/", "group": "Labels", "image": "ul_labels.jpg", "summary": "Custom warning and caution labels certified under UL 969 (File #MH12483) and made to the ANSI standards for safety signs and labels. Available with an LSE adhesive for powder coated surfaces." },
-  { "id": "window-decals-static-clings-labels", "title": "Window Decals / Static Clings Labels", "path": "/products/window-decals-static-clings-labels/", "group": "Labels", "image": "window_equipment_labels.jpg" },
-  { "id": "custom-application", "title": "Custom Application", "path": "/products/custom-application/", "group": "Overlays, switches & custom work", "image": "custom-application-adhesive-labels.jpg", "summary": "Printing directly on flat metal cases, multi-layered acrylic templates, plastic special event tickets and other one-off work, combining digital and conventional printing and cutting for fast turnaround and low set up cost." },
-  { "id": "device-spacers-insulators", "title": "Device Spacers / Insulators", "path": "/products/device-spacers-insulators/", "group": "Overlays, switches & custom work" },
-  { "id": "graphic-overlays", "title": "Graphic Overlays", "path": "/products/graphic-overlays/", "group": "Overlays, switches & custom work", "image": "custom_graphic_overlay.jpg", "summary": "Durable polycarbonate and polyester overlays with deadfront and LED display windows, selective texture and embossing. UL 969 certified constructions, RoHS compliant." },
-  { "id": "led-deadfront-clear-windows", "title": "LED / Deadfront / Clear Windows", "path": "/products/led-deadfront-clear-windows/", "group": "Overlays, switches & custom work" },
-  { "id": "membrane-switches", "title": "Membrane Switches", "path": "/products/membrane-switches/", "group": "Overlays, switches & custom work", "image": "embossed_membrane_switches.jpg", "summary": "Graphic overlays in polycarbonate or polyester thin film combined with membrane circuitry. A membrane switch seals a device from the front and offers colorful graphics, display windows, cut-outs, selective texture and embossed keypads." },
-  { "id": "metallic-labels-nameplates", "title": "Metallic Labels & Nameplates", "path": "/products/metallic-labels-nameplates/", "group": "Overlays, switches & custom work", "image": "metallic_ul_label.jpg" },
-  { "id": "prototypes-rd", "title": "Prototypes / R&D", "path": "/products/prototypes-rd/", "group": "Overlays, switches & custom work" }
+  {
+    "id": "agency-fcc-labels",
+    "title": "Agency & FCC Labels",
+    "path": "/products/agency-fcc-labels/",
+    "group": "Labels",
+    "image": "imprintable_ul_labels.jpg",
+    "summary": "Certified under UL Marking & Labeling Systems – Component PGDQ2 (UL 969), File #MH12483, for indoor and outdoor use and tested to the Canadian cUL standard. RoHS compliant, and available with an LSE adhesive for powder coated surfaces."
+  },
+  {
+    "id": "back-panel-labels",
+    "title": "Back Panel Labels",
+    "path": "/products/back-panel-labels/",
+    "group": "Labels",
+    "image": "imported/2014/11/back-panel.jpg",
+    "summary": "Back panel labels with thermal transfer, die-cut, screen-printed and laser-cut options on durable polycarbonate."
+  },
+  {
+    "id": "barcode-qr-code-labels",
+    "title": "Barcode & QR Code Labels",
+    "path": "/products/barcode-qr-code-labels/",
+    "group": "Labels",
+    "image": "barcode-asset-labels-2.jpg",
+    "summary": "Barcode and QR code labels with sequential numbers, static barcodes, random serial numbers or any specified data, UV printed on durable materials."
+  },
+  {
+    "id": "custom-shape-labels",
+    "title": "Custom Shape Labels",
+    "path": "/products/custom-shape-labels/",
+    "group": "Labels",
+    "image": "custom_shape_die_cut_labels.jpg",
+    "summary": "With Adhesa Plate's in house digital plotters, laser cutter, and traditional die-cutters, we have the capabilities to cut material such as polycarbonate, polyester, vinyl, acrylic, specialty foam..."
+  },
+  {
+    "id": "dome-labels",
+    "title": "Dome Labels",
+    "path": "/products/dome-labels/",
+    "group": "Labels",
+    "image": "custom_dome_labels.jpg",
+    "summary": "Domed urethane coated labels made from white, clear, chrome silver and brushed silver polyester. A .060” clear, non-yellowing urethane coating adds a high end 3-D look, is outdoor durable and can self-repair dents."
+  },
+  {
+    "id": "equipment-labels",
+    "title": "Equipment Labels",
+    "path": "/products/equipment-labels/",
+    "group": "Labels",
+    "image": "equipment_labels.jpg",
+    "summary": "With our diverse printing and cutting capabilities, Adhesa Plate Mfg offers high quality equipment labels and nameplates with the following benefits to our customer: - Shorter turnaround time - No..."
+  },
+  {
+    "id": "imprintable-labels",
+    "title": "Imprintable Labels",
+    "path": "/products/imprintable-labels/",
+    "group": "Labels",
+    "image": "imported/2014/11/imprintable_ul_labels.jpg",
+    "summary": "AdhesaTherm labels are evaluated by UL for additional printing by end user using thermal transfer printer with resin ribbon. Imprintable Coating or Laminate - Kiss-cut on sheet or individual..."
+  },
+  {
+    "id": "id-labels",
+    "title": "ID Labels",
+    "path": "/products/id-labels/",
+    "group": "Labels",
+    "image": "imported/2014/09/id_adhesive_labels.jpg",
+    "summary": "Custom ID labels for electronic and medical devices and harsh environments, with durable materials and precision printing."
+  },
+  {
+    "id": "instruction-labels",
+    "title": "Instruction Labels",
+    "path": "/products/instruction-labels/",
+    "group": "Labels",
+    "image": "imported/2014/11/instruction_die_cut_labels.jpg",
+    "summary": "Instruction label sets, laminated labels and two-sided tags, with die-cut options and 3M adhesives."
+  },
+  {
+    "id": "variable-data-labels",
+    "title": "Variable Data Labels",
+    "path": "/products/variable-data-labels/",
+    "group": "Labels",
+    "image": "imported/2014/11/custom_adhesive_labels-1.jpg",
+    "summary": "Adhesa Plate manufactures custom labels with serial numbers, barcodes, and QR codes. Material options includes foil, aluminum, polycarbonate, polyester, vinyl, and paper with or without adhesive..."
+  },
+  {
+    "id": "vinyl-cut-graphics-labels",
+    "title": "Vinyl Cut Graphics Labels",
+    "path": "/products/vinyl-cut-graphics-labels/",
+    "group": "Labels",
+    "image": "imported/2014/11/pasted-image.jpg",
+    "summary": "Material: Vinyl. Suitable for indoor or outdoor Graphics: Cutting on blank material only or add color with digital or screen printing Cutting: Done by digital plotter, laser, or die tool <..."
+  },
+  {
+    "id": "warning-labels",
+    "title": "Warning Labels",
+    "path": "/products/warning-labels/",
+    "group": "Labels",
+    "image": "ul_labels.jpg",
+    "summary": "Custom warning and caution labels certified under UL 969 (File #MH12483) and made to the ANSI standards for safety signs and labels. Available with an LSE adhesive for powder coated surfaces."
+  },
+  {
+    "id": "window-decals-static-clings-labels",
+    "title": "Window Decals / Static Clings Labels",
+    "path": "/products/window-decals-static-clings-labels/",
+    "group": "Labels",
+    "image": "window_equipment_labels.jpg",
+    "summary": "Adhesa Plate offers attractive and functional custom window decals / static cling labels for the following applications and more! - Parking permits - Retail & various promotion - Sports team or..."
+  },
+  {
+    "id": "custom-application",
+    "title": "Custom Application",
+    "path": "/products/custom-application/",
+    "group": "Overlays, switches & custom work",
+    "image": "custom-application-adhesive-labels.jpg",
+    "summary": "Printing directly on flat metal cases, multi-layered acrylic templates, plastic special event tickets and other one-off work, combining digital and conventional printing and cutting for fast turnaround and low set up cost."
+  },
+  {
+    "id": "device-spacers-insulators",
+    "title": "Device Spacers / Insulators",
+    "path": "/products/device-spacers-insulators/",
+    "group": "Overlays, switches & custom work",
+    "image": "legacy/custom_adhesive_spacers.jpg",
+    "summary": "Custom device spacers, insulators, shims, dust covers and vibration dampeners, screen printed and die or laser cut from polycarbonate, polyester and vinyl."
+  },
+  {
+    "id": "graphic-overlays",
+    "title": "Graphic Overlays",
+    "path": "/products/graphic-overlays/",
+    "group": "Overlays, switches & custom work",
+    "image": "custom_graphic_overlay.jpg",
+    "summary": "Durable polycarbonate and polyester overlays with deadfront and LED display windows, selective texture and embossing. UL 969 certified constructions, RoHS compliant."
+  },
+  {
+    "id": "led-deadfront-clear-windows",
+    "title": "LED / Deadfront / Clear Windows",
+    "path": "/products/led-deadfront-clear-windows/",
+    "group": "Overlays, switches & custom work",
+    "image": "imported/2014/11/window_equipment_labels.jpg",
+    "summary": "Window and display overlay options include colored and smoky deadfront windows, red and clear windows, LCD display windows and multicolor LED windows."
+  },
+  {
+    "id": "membrane-switches",
+    "title": "Membrane Switches",
+    "path": "/products/membrane-switches/",
+    "group": "Overlays, switches & custom work",
+    "image": "embossed_membrane_switches.jpg",
+    "summary": "Graphic overlays in polycarbonate or polyester thin film combined with membrane circuitry. A membrane switch seals a device from the front and offers colorful graphics, display windows, cut-outs, selective texture and embossed keypads."
+  },
+  {
+    "id": "metallic-labels-nameplates",
+    "title": "Metallic Labels & Nameplates",
+    "path": "/products/metallic-labels-nameplates/",
+    "group": "Overlays, switches & custom work",
+    "image": "metallic_ul_label.jpg",
+    "summary": "Material: - 2 mil, 3 mil, and 5 mil aluminum foil - 20 mil and 32 mil photo anodized - 32 mil & 62 mil stainless steel Print Methods: - UV Ink surface print - UV Ink etch & fill - Photo developed..."
+  },
+  {
+    "id": "prototypes-rd",
+    "title": "Prototypes / R&D",
+    "path": "/products/prototypes-rd/",
+    "group": "Overlays, switches & custom work",
+    "image": "imported/2014/11/custom_shape_die_cut_labels.jpg",
+    "summary": "Adhesa Plate offers affordable prototype and short-run orders. Our digital capabilities allows us to provide a fast turnaround time, typically 3-5 days, and top quality products without high setup..."
+  }
 ]

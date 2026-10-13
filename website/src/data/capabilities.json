@@ -1,15 +1,117 @@
 [
-  { "id": "screen-printing", "title": "Screen Printing", "path": "/capabilities/screen-printing/", "group": "Printing", "icon": "printer" },
-  { "id": "uv-ink-jet-printing", "title": "UV Ink Jet Printing", "path": "/capabilities/uv-ink-jet-printing/", "group": "Printing", "icon": "printer" },
-  { "id": "thermal-transfer", "title": "Thermal Transfer", "path": "/thermal-transfer/", "group": "Printing", "icon": "printer" },
-  { "id": "color-matching", "title": "Color Matching", "path": "/capabilities/color-matching/", "group": "Printing", "icon": "palette" },
-  { "id": "serializing-barcoding", "title": "Serializing & Barcoding", "path": "/capabilities/serializing-barcoding/", "group": "Printing", "icon": "barcode", "summary": "Sequential, human readable and machine readable numbers, static and sequential barcodes, QR or UID codes on a variety of label materials and 3M adhesives." },
-  { "id": "laminating", "title": "Laminating", "path": "/capabilities/laminating/", "group": "Finishing", "icon": "layers" },
-  { "id": "dome-coating", "title": "Dome Coating", "path": "/capabilities/dome-coating/", "group": "Finishing", "icon": "drop" },
-  { "id": "embossing", "title": "Embossing", "path": "/capabilities/embossing/", "group": "Finishing", "icon": "layers" },
-  { "id": "die-cutting", "title": "Die Cutting", "path": "/capabilities/die-cutting/", "group": "Cutting", "icon": "cut" },
-  { "id": "laser-cutting", "title": "Laser Cutting", "path": "/capabilities/laser-cutting/", "group": "Cutting", "icon": "bolt" },
-  { "id": "plotter-cutting", "title": "Plotter Cutting", "path": "/capabilities/plotter-cutting/", "group": "Cutting", "icon": "cut" },
-  { "id": "combining-technologies", "title": "Combining Technologies", "path": "/capabilities/combining-technologies/", "group": "Design & engineering", "icon": "puzzle" },
-  { "id": "full-service-art-dept", "title": "Full Service Art Department", "path": "/capabilities/full-service-art-dept/", "group": "Design & engineering", "icon": "pen", "summary": "Designers on staff can help create a label that will “identify your product”. Because of the technical nature, most artwork is supplied by the customer." }
+  {
+    "id": "screen-printing",
+    "title": "Screen Printing",
+    "path": "/capabilities/screen-printing/",
+    "group": "Printing",
+    "icon": "printer",
+    "image": "legacy/screenprint.png",
+    "summary": "Screen printing provides durability to meet outdoor requirements. With UV technology, print quality is unsurpassed."
+  },
+  {
+    "id": "uv-ink-jet-printing",
+    "title": "UV Ink Jet Printing",
+    "path": "/capabilities/uv-ink-jet-printing/",
+    "group": "Printing",
+    "icon": "printer",
+    "image": "imported/2014/10/UV-InkJet.png",
+    "summary": "UV InkJet Printing Digital UV inkjet printing offers the highest quality image using CMYK 4 color process with outdoor durability. This option enables you to use unlimited colors for the cost of 4..."
+  },
+  {
+    "id": "thermal-transfer",
+    "title": "Thermal Transfer",
+    "path": "/thermal-transfer/",
+    "group": "Printing",
+    "icon": "printer",
+    "summary": "Digital thermal transfer printing for durable small runs and variable data, including serial numbers and barcodes."
+  },
+  {
+    "id": "color-matching",
+    "title": "Color Matching",
+    "path": "/capabilities/color-matching/",
+    "group": "Printing",
+    "icon": "palette",
+    "image": "imported/2014/10/color.png",
+    "summary": "Using a color spectrophotometer, we can achieve an error percentage of less than one delta unit. This ensures the highest quality consistently for custom color matching. E-mail or call us today..."
+  },
+  {
+    "id": "serializing-barcoding",
+    "title": "Serializing & Barcoding",
+    "path": "/capabilities/serializing-barcoding/",
+    "group": "Printing",
+    "icon": "barcode",
+    "summary": "Sequential, human readable and machine readable numbers, static and sequential barcodes, QR or UID codes on a variety of label materials and 3M adhesives.",
+    "image": "imported/2014/10/barcode.png"
+  },
+  {
+    "id": "laminating",
+    "title": "Laminating",
+    "path": "/capabilities/laminating/",
+    "group": "Finishing",
+    "icon": "layers",
+    "image": "imported/2014/10/laminate.png",
+    "summary": "Our laminating process provides laminations for protection and/or high performance adhesive for special adhesion issues. High gloss and matte mylars create a solvent and scratch resistant barrier..."
+  },
+  {
+    "id": "dome-coating",
+    "title": "Dome Coating",
+    "path": "/capabilities/dome-coating/",
+    "group": "Finishing",
+    "icon": "drop",
+    "image": "imported/2014/10/dome.png",
+    "summary": "Polyurethane doming is the process of pouring liquid polyurethane on top of a label. The natural flow stop characteristics create a consistent beveled edge and a coating thickness of .060 to .080..."
+  },
+  {
+    "id": "embossing",
+    "title": "Embossing",
+    "path": "/capabilities/embossing/",
+    "group": "Finishing",
+    "icon": "layers",
+    "image": "imported/2020/09/emboss.png",
+    "summary": "Combining heat, pressure and quality craftsmanship, we can permanently form polycarbonate (lexan ©) or polyester (mylar ©) to create raised keypads for membrane switch graphic overlays. Besides..."
+  },
+  {
+    "id": "die-cutting",
+    "title": "Die Cutting",
+    "path": "/capabilities/die-cutting/",
+    "group": "Cutting",
+    "icon": "cut",
+    "image": "imported/2014/10/diecut.png",
+    "summary": "Close tolerance is guaranteed on a wide variety of standard or custom shapes and material thicknesses. We can provide kiss cut / strip form labels to accurate .060 thick custom panels. Note that..."
+  },
+  {
+    "id": "laser-cutting",
+    "title": "Laser Cutting",
+    "path": "/capabilities/laser-cutting/",
+    "group": "Cutting",
+    "icon": "bolt",
+    "image": "imported/2014/10/LaserCutting.png",
+    "summary": "Digital laser cutting provides a much more versatile and accurate version of digital cutting. This option is suitable for short-run situations or when conventional die cutting is prohibited (i.e..."
+  },
+  {
+    "id": "plotter-cutting",
+    "title": "Plotter Cutting",
+    "path": "/capabilities/plotter-cutting/",
+    "group": "Cutting",
+    "icon": "cut",
+    "image": "imported/2014/10/Plotter.png",
+    "summary": "Digital plotter cutting provides another cutting solution without the cost of tooling. It is designed more for cutting labels and decals or non-critical tolerance polycarbonate applications. A..."
+  },
+  {
+    "id": "combining-technologies",
+    "title": "Combining Technologies",
+    "path": "/capabilities/combining-technologies/",
+    "group": "Design & engineering",
+    "icon": "puzzle",
+    "summary": "Adhesa Plate Mfg. has been in business since April of 1954. Our skills, craftsmanship, and creativity have allowed us to combine old technology with the new. We have strategically purchased new..."
+  },
+  {
+    "id": "full-service-art-dept",
+    "title": "Full Service Art Department",
+    "path": "/capabilities/full-service-art-dept/",
+    "group": "Design & engineering",
+    "icon": "pen",
+    "summary": "Designers on staff can help create a label that will “identify your product”. Because of the technical nature, most artwork is supplied by the customer.",
+    "image": "imported/2014/10/fullservices.png"
+  }
 ]
