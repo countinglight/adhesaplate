@@ -1,6 +1,7 @@
 ---
 import Logo from "./Logo.astro";
 import Icon from "./Icon.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 import { nav, quoteHref, site } from "../site.config";
 
 const current = Astro.url.pathname;
@@ -27,6 +28,7 @@ const current = Astro.url.pathname;
     </nav>
 
     <div class="site-header__actions">
+      <ThemeSwitcher />
       <a class="site-header__phone" href={site.phone.href}>
         <Icon name="phone" size={18} />
         <span>{site.phone.display}</span>
@@ -39,6 +41,7 @@ const current = Astro.url.pathname;
           <Icon name="menu" />
         </summary>
         <nav class="mobile-menu__panel" aria-label="Mobile">
+          <ThemeSwitcher />
           <ul>
             {
               nav.map((item) => (
@@ -89,15 +92,15 @@ const current = Astro.url.pathname;
     display: block;
     padding: 0.5rem 0.7rem;
     border-radius: 999px;
-    color: rgb(255 255 255 / 0.82);
+    color: var(--nav-link-color, rgb(255 255 255 / 0.82));
     font-size: 0.94rem;
     font-weight: 600;
     text-decoration: none;
   }
   .site-nav a:hover,
   .site-nav a[aria-current="page"] {
-    color: #fff;
-    background: rgb(255 255 255 / 0.12);
+    color: var(--nav-hover-color, #fff);
+    background: var(--nav-hover-bg, rgb(255 255 255 / 0.12));
   }
   .site-header__actions {
     display: flex;
@@ -108,7 +111,7 @@ const current = Astro.url.pathname;
     display: none;
     align-items: center;
     gap: 0.4rem;
-    color: #fff;
+    color: var(--header-text, #fff);
     font-weight: 700;
     font-size: 0.94rem;
     text-decoration: none;
@@ -130,7 +133,7 @@ const current = Astro.url.pathname;
     width: 2.75rem;
     height: 2.75rem;
     border-radius: 12px;
-    color: #fff;
+    color: var(--header-text, #fff);
     background: rgb(255 255 255 / 0.1);
     cursor: pointer;
     list-style: none;
@@ -139,6 +142,7 @@ const current = Astro.url.pathname;
     display: none;
   }
   .mobile-menu__panel {
+    --theme-label-display-mobile: inline;
     position: absolute;
     inset: var(--header-h) 0 auto 0;
     display: grid;
@@ -157,10 +161,10 @@ const current = Astro.url.pathname;
     padding: 0.85rem 0.5rem;
     border-radius: 0;
     font-size: 1.05rem;
-    border-bottom: 1px solid rgb(255 255 255 / 0.08);
+    border-bottom: 1px solid var(--nav-line-color, rgb(255 255 255 / 0.08));
   }
   .mobile-menu__panel li a[aria-current="page"] {
-    color: var(--cyan-300);
+    color: var(--nav-current-color, var(--cyan-300));
   }
 
   @media (min-width: 1600px) {
@@ -168,7 +172,7 @@ const current = Astro.url.pathname;
       display: inline-flex;
     }
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1500px) {
     .site-nav {
       display: none;
     }
@@ -180,5 +184,12 @@ const current = Astro.url.pathname;
     .site-header__quote {
       display: none;
     }
+  }
+  @media (max-width: 600px) {
+    .site-header__bar { gap: .5rem; }
+    .site-header__actions { gap: .5rem; }
+    .site-header__actions > :global(.theme-switcher) { display: none; }
+    .mobile-menu__panel > :global(.theme-switcher) { justify-content: space-between; padding: .4rem .5rem; }
+    .mobile-menu__panel > :global(.theme-switcher) span { display: inline; }
   }
 </style>

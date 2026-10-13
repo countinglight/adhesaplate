@@ -1,0 +1,17 @@
+---
+import { themes } from "../themes";
+---
+
+<label class="theme-switcher">
+  <span>Theme</span>
+  <select data-theme-select aria-label="Visual theme">
+    {themes.map((theme) => <option value={theme.id}>{theme.label}</option>)}
+  </select>
+</label>
+
+<style>
+  .theme-switcher { display: flex; align-items: center; gap: .45rem; white-space: nowrap; font: 600 .78rem/1.2 var(--font-body); color: var(--header-text, #fff); }
+  .theme-switcher select { max-width: 10rem; min-height: 2.45rem; padding: .45rem .55rem; border: 1px solid var(--header-control-line, rgb(255 255 255 / .35)); border-radius: var(--radius-sm); background: var(--header-control-bg, rgb(255 255 255 / .1)); color: var(--header-text, #fff); font: inherit; cursor: pointer; }
+  .theme-switcher option { color: #1c1f23; background: #fff; }
+  @media (max-width: 600px) { .theme-switcher span { display: var(--theme-label-display-mobile, none); } .theme-switcher select { max-width: 8.2rem; font-size: .72rem; } }
+</style>

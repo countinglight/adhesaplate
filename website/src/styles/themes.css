@@ -1,0 +1,90 @@
+/* Each visual theme overrides semantic design tokens first. Component rules below
+   are reserved for shapes/composition that cannot be expressed with tokens. */
+html[data-theme="graphite-orange"] {
+  --ink-950: #121416;
+  --ink-900: #1c1f23;
+  --ink-700: #30353b;
+  --ink-500: #555d64;
+  --ink-300: #a5aaae;
+  --line: #dad9d4;
+  --surface: #fff;
+  --surface-soft: #f4f4f2;
+  --surface-tint: #f5eee8;
+  --blue-700: #9d310b;
+  --blue-600: #c2410c;
+  --blue-500: #d3531d;
+  --cyan-500: #c2410c;
+  --cyan-400: #e57844;
+  --cyan-300: #ffb38a;
+  --amber-500: #c2410c;
+  --amber-600: #a6350b;
+  --gradient-brand: linear-gradient(120deg, #c2410c, #e16632);
+  --gradient-deep: linear-gradient(135deg, #1c1f23, #333940);
+  --gradient-soft: linear-gradient(180deg, #f4f4f2, #fff);
+  --font-body: "IBM Plex Sans", "Inter Variable", system-ui, sans-serif;
+  --font-display: "IBM Plex Sans", "Manrope Variable", system-ui, sans-serif;
+  --radius-sm: 5px;
+  --radius: 8px;
+  --radius-lg: 10px;
+  --shadow-sm: none;
+  --shadow: 0 12px 30px rgb(28 31 35 / .09);
+  --shadow-lg: 0 24px 54px rgb(18 20 22 / .25);
+  --header-h: 76px;
+  --header-text: #1c1f23;
+  --logo-light-color: #1c1f23;
+  --header-control-line: #dad9d4;
+  --header-control-bg: #f4f4f2;
+  --nav-link-color: #30353b;
+  --nav-hover-color: #c2410c;
+  --nav-hover-bg: #f5eee8;
+  --nav-current-color: #c2410c;
+  --nav-line-color: #dad9d4;
+  color-scheme: light;
+}
+
+html[data-theme="graphite-orange"] body { background: #f4f4f2; line-height: 1.55; }
+html[data-theme="graphite-orange"] h1,
+html[data-theme="graphite-orange"] h2,
+html[data-theme="graphite-orange"] h3 { font-weight: 600; letter-spacing: -.01em; }
+html[data-theme="graphite-orange"] .container { width: min(100% - 2 * var(--gutter), 1200px); }
+html[data-theme="graphite-orange"] .eyebrow { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .75rem; font-weight: 500; letter-spacing: .08em; }
+html[data-theme="graphite-orange"] .btn { border-radius: 8px; box-shadow: none; font-weight: 600; }
+html[data-theme="graphite-orange"] .btn--primary { background: #c2410c; color: #fff; }
+html[data-theme="graphite-orange"] .btn--primary:hover { background: #9d310b; color: #fff; box-shadow: none; }
+html[data-theme="graphite-orange"] .btn--brand { background: #1c1f23; box-shadow: none; }
+html[data-theme="graphite-orange"] .btn--brand:hover { background: #30353b; box-shadow: none; }
+html[data-theme="graphite-orange"] .card { border-radius: 0; box-shadow: none; }
+html[data-theme="graphite-orange"] a.card:hover,
+html[data-theme="graphite-orange"] .card:has(.card__link:hover),
+html[data-theme="graphite-orange"] .card:has(.card__title-link:hover) { border-color: #c2410c; box-shadow: 0 8px 20px rgb(28 31 35 / .08); }
+html[data-theme="graphite-orange"] .icon-tile { border-radius: 5px; box-shadow: none; }
+html[data-theme="graphite-orange"] .chip { border-radius: 5px; }
+
+html[data-theme="graphite-orange"] .site-header { background: #fff; border-color: #dad9d4; backdrop-filter: none; }
+html[data-theme="graphite-orange"] .site-header .logo__mark,
+html[data-theme="graphite-orange"] .site-header .logo__dot,
+html[data-theme="graphite-orange"] .site-header .logo__tag { display: none; }
+html[data-theme="graphite-orange"] .site-header .logo__name { text-transform: uppercase; letter-spacing: .12em; font-size: 1.2rem; font-weight: 600; }
+html[data-theme="graphite-orange"] .site-nav a { color: #30353b; border-radius: 5px; font-weight: 500; }
+html[data-theme="graphite-orange"] .site-nav a:hover,
+html[data-theme="graphite-orange"] .site-nav a[aria-current="page"] { color: #c2410c; background: #f5eee8; }
+html[data-theme="graphite-orange"] .site-header__phone { color: #1c1f23; }
+html[data-theme="graphite-orange"] .mobile-menu summary { color: #1c1f23; background: #f4f4f2; border-radius: 5px; }
+html[data-theme="graphite-orange"] .mobile-menu__panel { background: #fff; border-color: #dad9d4; }
+html[data-theme="graphite-orange"] .site-header .mobile-menu__panel li a { color: #30353b; border-color: #dad9d4; }
+html[data-theme="graphite-orange"] .site-header .mobile-menu__panel li a[aria-current="page"] { color: #c2410c; }
+html[data-theme="graphite-orange"] .mobile-menu__panel .btn--ghost { color: #1c1f23; border-color: #dad9d4; }
+
+html[data-theme="graphite-orange"] .page-hero { background: #1c1f23; }
+html[data-theme="graphite-orange"] .page-hero .eyebrow { color: #ffb38a; }
+html[data-theme="graphite-orange"] .cta-band { color: #1c1f23; background: #f8eee7; border-top: 1px solid #dad9d4; }
+html[data-theme="graphite-orange"] .cta-band h2 { color: #1c1f23; }
+html[data-theme="graphite-orange"] .cta-band p { color: #555d64; }
+html[data-theme="graphite-orange"] .cta-band .btn--ghost { color: #1c1f23; border-color: #5a626b; background: transparent; }
+html[data-theme="graphite-orange"] .site-footer { background: #121416; }
+html[data-theme="graphite-orange"] .site-footer { --logo-light-color: #fff; }
+html[data-theme="graphite-orange"] .site-footer .logo__mark,
+html[data-theme="graphite-orange"] .site-footer .logo__dot,
+html[data-theme="graphite-orange"] .site-footer .logo__tag { display: none; }
+html[data-theme="graphite-orange"] .site-footer .logo__name { text-transform: uppercase; letter-spacing: .12em; font-weight: 600; }
+html[data-theme="graphite-orange"] .site-footer h2 { color: #ffb38a; }
