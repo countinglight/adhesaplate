@@ -46,7 +46,7 @@ html[data-theme="graphite-orange"] body { background: #f4f4f2; line-height: 1.55
 html[data-theme="graphite-orange"] h1,
 html[data-theme="graphite-orange"] h2,
 html[data-theme="graphite-orange"] h3 { font-weight: 600; letter-spacing: -.01em; }
-html[data-theme="graphite-orange"] .container { width: min(100% - 2 * var(--gutter), 1200px); }
+html[data-theme="graphite-orange"] .container:not(.site-header__bar) { width: min(100% - 2 * var(--gutter), 1200px); }
 html[data-theme="graphite-orange"] .eyebrow { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .75rem; font-weight: 500; letter-spacing: .08em; }
 html[data-theme="graphite-orange"] .btn { border-radius: 8px; box-shadow: none; font-weight: 600; }
 html[data-theme="graphite-orange"] .btn--primary { background: #c2410c; color: #fff; }
@@ -81,8 +81,13 @@ html[data-theme="graphite-orange"] .cta-band { color: #1c1f23; background: #f8ee
 html[data-theme="graphite-orange"] .cta-band h2 { color: #1c1f23; }
 html[data-theme="graphite-orange"] .cta-band p { color: #555d64; }
 html[data-theme="graphite-orange"] .cta-band .btn--ghost { color: #1c1f23; border-color: #5a626b; background: transparent; }
-html[data-theme="graphite-orange"] .site-footer { background: #121416; }
-html[data-theme="graphite-orange"] .site-footer { --logo-light-color: #fff; }
+html[data-theme="graphite-orange"] .site-footer {
+  background: #121416;
+  --logo-light-color: #fff;
+  --header-text: #fff;
+  --header-control-line: #5a626b;
+  --header-control-bg: #30353b;
+}
 html[data-theme="graphite-orange"] .site-footer .logo__mark,
 html[data-theme="graphite-orange"] .site-footer .logo__dot,
 html[data-theme="graphite-orange"] .site-footer .logo__tag { display: none; }

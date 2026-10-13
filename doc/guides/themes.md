@@ -1,6 +1,6 @@
 # Visual themes
 
-The prototype currently has two selectable themes: `blue-gold` (the original Astro design) and `graphite-orange` (the owner's October 2026 home-page study). The selector in the header applies a theme to every page without rebuilding. It saves the choice in browser storage. For a review link, add `?theme=graphite-orange` or `?theme=blue-gold` to any page URL; the URL choice takes precedence over the saved choice. The selector updates the URL as well.
+The prototype currently has two selectable themes: `blue-gold` (the original Astro design) and `graphite-orange` (the owner's October 2026 home-page study). The discreet selector in the footer applies a theme to every page without rebuilding. It saves the choice in browser storage. For a review link, add `?theme=graphite-orange` or `?theme=blue-gold` to any page URL; the URL choice takes precedence over the saved choice. The selector updates the URL as well.
 
 ## How it works
 

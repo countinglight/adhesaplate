@@ -1,6 +1,7 @@
 ---
 import Logo from "./Logo.astro";
 import Icon from "./Icon.astro";
+import ThemeSwitcher from "./ThemeSwitcher.astro";
 import { nav, site } from "../site.config";
 
 const year = new Date().getFullYear();
@@ -52,6 +53,7 @@ const { address } = site;
   <div class="container site-footer__legal">
     <p>© {year} {site.legalName}. All rights reserved.</p>
     <p><a href="/privacy-policy/">Privacy policy</a> · <a href="/term-of-use/">Terms of use</a></p>
+    <ThemeSwitcher />
   </div>
 </footer>
 
@@ -108,9 +110,17 @@ const { address } = site;
     color: var(--cyan-400);
   }
   .site-footer__legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .75rem 1.5rem;
     padding-block: 1.25rem 2.75rem;
     border-top: 1px solid rgb(255 255 255 / 0.1);
     font-size: 0.86rem;
     color: rgb(255 255 255 / 0.55);
+  }
+  .site-footer__legal > :global(.theme-switcher) { margin-left: auto; }
+  @media (max-width: 600px) {
+    .site-footer__legal > :global(.theme-switcher) { margin-left: 0; width: 100%; }
   }
 </style>

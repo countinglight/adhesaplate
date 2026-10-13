@@ -1,7 +1,6 @@
 ---
 import Logo from "./Logo.astro";
 import Icon from "./Icon.astro";
-import ThemeSwitcher from "./ThemeSwitcher.astro";
 import { nav, quoteHref, site } from "../site.config";
 
 const current = Astro.url.pathname;
@@ -28,7 +27,6 @@ const current = Astro.url.pathname;
     </nav>
 
     <div class="site-header__actions">
-      <ThemeSwitcher />
       <a class="site-header__phone" href={site.phone.href}>
         <Icon name="phone" size={18} />
         <span>{site.phone.display}</span>
@@ -41,7 +39,6 @@ const current = Astro.url.pathname;
           <Icon name="menu" />
         </summary>
         <nav class="mobile-menu__panel" aria-label="Mobile">
-          <ThemeSwitcher />
           <ul>
             {
               nav.map((item) => (
@@ -76,12 +73,16 @@ const current = Astro.url.pathname;
   .site-header__bar {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 1.5rem;
     min-height: var(--header-h);
+    /* Navigation needs more room than the reading column used by page content. */
+    width: calc(100% - 2 * var(--gutter));
+    max-width: none;
   }
   .site-header__logo {
     text-decoration: none;
-    margin-right: auto;
+    flex: none;
   }
   .site-nav ul {
     display: flex;
@@ -106,6 +107,7 @@ const current = Astro.url.pathname;
     display: flex;
     align-items: center;
     gap: 0.9rem;
+    flex: none;
   }
   .site-header__phone {
     display: none;
@@ -142,7 +144,6 @@ const current = Astro.url.pathname;
     display: none;
   }
   .mobile-menu__panel {
-    --theme-label-display-mobile: inline;
     position: absolute;
     inset: var(--header-h) 0 auto 0;
     display: grid;
@@ -167,12 +168,12 @@ const current = Astro.url.pathname;
     color: var(--nav-current-color, var(--cyan-300));
   }
 
-  @media (min-width: 1600px) {
+  @media (min-width: 1800px) {
     .site-header__phone {
       display: inline-flex;
     }
   }
-  @media (max-width: 1500px) {
+  @media (max-width: 1650px) {
     .site-nav {
       display: none;
     }
@@ -188,8 +189,5 @@ const current = Astro.url.pathname;
   @media (max-width: 600px) {
     .site-header__bar { gap: .5rem; }
     .site-header__actions { gap: .5rem; }
-    .site-header__actions > :global(.theme-switcher) { display: none; }
-    .mobile-menu__panel > :global(.theme-switcher) { justify-content: space-between; padding: .4rem .5rem; }
-    .mobile-menu__panel > :global(.theme-switcher) span { display: inline; }
   }
 </style>
