@@ -33,30 +33,6 @@ const current = Astro.url.pathname;
       </a>
       <a class="btn btn--primary site-header__quote" href={quoteHref}>Get a quote</a>
 
-      <!-- Mobile menu: a native disclosure, so it works without JavaScript. -->
-      <details class="mobile-menu">
-        <summary aria-label="Menu">
-          <Icon name="menu" />
-        </summary>
-        <nav class="mobile-menu__panel" aria-label="Mobile">
-          <ul>
-            {
-              nav.map((item) => (
-                <li>
-                  <a href={item.path} aria-current={current === item.path ? "page" : undefined}>
-                    {item.label}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-          <a class="btn btn--primary" href={quoteHref}>Get a quote</a>
-          <a class="btn btn--ghost" href={site.phone.href}>
-            <Icon name="phone" size={18} />
-            {site.phone.display}
-          </a>
-        </nav>
-      </details>
     </div>
   </div>
 </header>
@@ -88,8 +64,7 @@ const current = Astro.url.pathname;
     display: flex;
     gap: 0.15rem;
   }
-  .site-nav a,
-  .mobile-menu__panel li a {
+  .site-nav a {
     display: block;
     padding: 0.5rem 0.7rem;
     border-radius: 999px;
@@ -126,59 +101,24 @@ const current = Astro.url.pathname;
     white-space: nowrap;
   }
 
-  .mobile-menu {
-    display: none;
-  }
-  .mobile-menu summary {
-    display: grid;
-    place-items: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 12px;
-    color: var(--header-text, #fff);
-    background: rgb(255 255 255 / 0.1);
-    cursor: pointer;
-    list-style: none;
-  }
-  .mobile-menu summary::-webkit-details-marker {
-    display: none;
-  }
-  .mobile-menu__panel {
-    position: absolute;
-    inset: var(--header-h) 0 auto 0;
-    display: grid;
-    gap: 0.75rem;
-    padding: 1rem var(--gutter) 1.5rem;
-    background: var(--ink-900);
-    border-bottom: 1px solid rgb(255 255 255 / 0.1);
-    box-shadow: var(--shadow-lg);
-    max-height: calc(100dvh - var(--header-h));
-    overflow-y: auto;
-  }
-  .mobile-menu__panel ul {
-    display: grid;
-  }
-  .mobile-menu__panel li a {
-    padding: 0.85rem 0.5rem;
-    border-radius: 0;
-    font-size: 1.05rem;
-    border-bottom: 1px solid var(--nav-line-color, rgb(255 255 255 / 0.08));
-  }
-  .mobile-menu__panel li a[aria-current="page"] {
-    color: var(--nav-current-color, var(--cyan-300));
-  }
-
   @media (min-width: 1800px) {
     .site-header__phone {
       display: inline-flex;
     }
   }
-  @media (max-width: 1650px) {
-    .site-nav {
-      display: none;
+  @media (max-width: 1250px) {
+    .site-header__bar {
+      flex-wrap: wrap;
+      gap: 0.15rem 1rem;
+      padding-block: 0.5rem;
     }
-    .mobile-menu {
-      display: block;
+    .site-nav {
+      order: 3;
+      flex: 0 0 100%;
+    }
+    .site-nav ul {
+      justify-content: center;
+      flex-wrap: wrap;
     }
   }
   @media (max-width: 520px) {
@@ -187,7 +127,9 @@ const current = Astro.url.pathname;
     }
   }
   @media (max-width: 600px) {
-    .site-header__bar { gap: .5rem; }
-    .site-header__actions { gap: .5rem; }
+    .site-header__bar { gap: .25rem; }
+    .site-nav { overflow-x: auto; scrollbar-width: thin; }
+    .site-nav ul { justify-content: flex-start; flex-wrap: nowrap; width: max-content; }
+    .site-nav a { white-space: nowrap; }
   }
 </style>

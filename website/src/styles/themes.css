@@ -69,11 +69,6 @@ html[data-theme="graphite-orange"] .site-nav a { color: #30353b; border-radius: 
 html[data-theme="graphite-orange"] .site-nav a:hover,
 html[data-theme="graphite-orange"] .site-nav a[aria-current="page"] { color: #c2410c; background: #f5eee8; }
 html[data-theme="graphite-orange"] .site-header__phone { color: #1c1f23; }
-html[data-theme="graphite-orange"] .mobile-menu summary { color: #1c1f23; background: #f4f4f2; border-radius: 5px; }
-html[data-theme="graphite-orange"] .mobile-menu__panel { background: #fff; border-color: #dad9d4; }
-html[data-theme="graphite-orange"] .site-header .mobile-menu__panel li a { color: #30353b; border-color: #dad9d4; }
-html[data-theme="graphite-orange"] .site-header .mobile-menu__panel li a[aria-current="page"] { color: #c2410c; }
-html[data-theme="graphite-orange"] .mobile-menu__panel .btn--ghost { color: #1c1f23; border-color: #dad9d4; }
 
 html[data-theme="graphite-orange"] .page-hero { background: #1c1f23; }
 html[data-theme="graphite-orange"] .page-hero .eyebrow { color: #ffb38a; }
