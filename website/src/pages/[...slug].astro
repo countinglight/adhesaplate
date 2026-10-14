@@ -45,7 +45,7 @@ const others = siblings
       : a.data.title.localeCompare(b.data.title),
   )
   .slice(0, isPost ? 6 : 30);
-const dateText = data.date?.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+const dateText = data.date?.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" });
 
 const jsonLd = isPost
   ? {

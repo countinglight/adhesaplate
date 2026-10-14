@@ -40,7 +40,7 @@ const posts = (await getCollection("pages", ({ data }) => data.section === "blog
             )}
             {post.data.date && (
               <p class="post__date">
-                {post.data.date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                {post.data.date.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })}
               </p>
             )}
             <h3><a class="card__title-link" href={post.data.path}>{post.data.title}</a></h3>
