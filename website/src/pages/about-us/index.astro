@@ -46,6 +46,10 @@ const timeline = [
   <section class="section">
     <div class="container split">
       <div class="prose">
+        <div class="about-logo">
+          <img class="about-logo__blue" src="/brand/adhesa-plate-vertical-blue.png" alt="Adhesa-Plate logo" width="3000" height="1200" loading="lazy" />
+          <img class="about-logo__black" src="/brand/adhesa-plate-vertical-black.png" alt="Adhesa-Plate logo" width="3000" height="1200" loading="lazy" />
+        </div>
         <p>
           This business model supports big companies with a wide variety of products, and big companies wanting “just
           in time” scheduled deliveries of smaller batches or prototypes. It also supports smaller or start-up
@@ -110,6 +114,14 @@ const timeline = [
 </Base>
 
 <style>
+  .about-logo {
+    width: min(100%, 32rem);
+    margin-bottom: 0.5rem;
+  }
+  .about-logo img { width: 100%; height: auto; }
+  .about-logo__black { display: none; }
+  :global(html[data-theme="graphite-orange"]) .about-logo__blue { display: none; }
+  :global(html[data-theme="graphite-orange"]) .about-logo__black { display: block; }
   .split {
     display: grid;
     grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);

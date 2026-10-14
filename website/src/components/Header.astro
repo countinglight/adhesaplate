@@ -1,5 +1,4 @@
 ---
-import Logo from "./Logo.astro";
 import Icon from "./Icon.astro";
 import { nav, quoteHref, site } from "../site.config";
 
@@ -7,11 +6,14 @@ const current = Astro.url.pathname;
 ---
 
 <header class="site-header">
-  <div class="container site-header__bar">
-    <a class="site-header__logo" href="/" aria-label={`${site.name} home`}>
-      <Logo />
+  <div class="site-header__brand">
+    <a class="container site-header__logo" href="/" aria-label={`${site.name} home`}>
+      <img class="site-header__logo-blue" src="/brand/adhesa-plate-landscape-blue.png" alt="Adhesa-Plate — Custom label, we identify your products" width="3000" height="578" />
+      <img class="site-header__logo-black" src="/brand/adhesa-plate-landscape-black.png" alt="" width="3000" height="551" />
     </a>
+  </div>
 
+  <div class="container site-header__bar">
     <nav class="site-nav" aria-label="Main">
       <ul>
         {
@@ -46,6 +48,26 @@ const current = Astro.url.pathname;
     backdrop-filter: saturate(1.4) blur(14px);
     border-bottom: 1px solid rgb(255 255 255 / 0.08);
   }
+  .site-header__brand {
+    background: #fff;
+    border-bottom: 1px solid #e4e4e4;
+  }
+  .site-header__logo {
+    display: flex;
+    align-items: center;
+    min-height: 5.5rem;
+    padding-block: 0.45rem;
+    width: calc(100% - 2 * var(--gutter));
+    max-width: none;
+    text-decoration: none;
+  }
+  .site-header__logo img {
+    width: min(100%, 430px);
+    height: auto;
+  }
+  .site-header__logo-black { display: none; }
+  :global(html[data-theme="graphite-orange"]) .site-header__logo-blue { display: none; }
+  :global(html[data-theme="graphite-orange"]) .site-header__logo-black { display: block; }
   .site-header__bar {
     display: flex;
     align-items: center;
@@ -55,10 +77,6 @@ const current = Astro.url.pathname;
     /* Navigation needs more room than the reading column used by page content. */
     width: calc(100% - 2 * var(--gutter));
     max-width: none;
-  }
-  .site-header__logo {
-    text-decoration: none;
-    flex: none;
   }
   .site-nav ul {
     display: flex;
@@ -83,6 +101,7 @@ const current = Astro.url.pathname;
     align-items: center;
     gap: 0.9rem;
     flex: none;
+    margin-left: auto;
   }
   .site-header__phone {
     display: none;

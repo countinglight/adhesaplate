@@ -46,7 +46,7 @@ html[data-theme="graphite-orange"] body { background: #f4f4f2; line-height: 1.55
 html[data-theme="graphite-orange"] h1,
 html[data-theme="graphite-orange"] h2,
 html[data-theme="graphite-orange"] h3 { font-weight: 600; letter-spacing: -.01em; }
-html[data-theme="graphite-orange"] .container:not(.site-header__bar) { width: min(100% - 2 * var(--gutter), 1200px); }
+html[data-theme="graphite-orange"] .container:not(.site-header__bar):not(.site-header__logo) { width: min(100% - 2 * var(--gutter), 1200px); }
 html[data-theme="graphite-orange"] .eyebrow { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: .75rem; font-weight: 500; letter-spacing: .08em; }
 html[data-theme="graphite-orange"] .btn { border-radius: 8px; box-shadow: none; font-weight: 600; }
 html[data-theme="graphite-orange"] .btn--primary { background: #c2410c; color: #fff; }
@@ -61,10 +61,6 @@ html[data-theme="graphite-orange"] .icon-tile { border-radius: 5px; box-shadow: 
 html[data-theme="graphite-orange"] .chip { border-radius: 5px; }
 
 html[data-theme="graphite-orange"] .site-header { background: #fff; border-color: #dad9d4; backdrop-filter: none; }
-html[data-theme="graphite-orange"] .site-header .logo__mark,
-html[data-theme="graphite-orange"] .site-header .logo__dot,
-html[data-theme="graphite-orange"] .site-header .logo__tag { display: none; }
-html[data-theme="graphite-orange"] .site-header .logo__name { text-transform: uppercase; letter-spacing: .12em; font-size: 1.2rem; font-weight: 600; }
 html[data-theme="graphite-orange"] .site-nav a { color: #30353b; border-radius: 5px; font-weight: 500; }
 html[data-theme="graphite-orange"] .site-nav a:hover,
 html[data-theme="graphite-orange"] .site-nav a[aria-current="page"] { color: #c2410c; background: #f5eee8; }
