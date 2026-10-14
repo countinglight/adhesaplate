@@ -26,9 +26,13 @@ export const site = {
     postalCode: "98188",
     country: "US",
   },
-  // Analytics is wired but off. Set the container id at cutover; the tag only
-  // loads on productionHost (see components/Analytics.astro).
-  analytics: { gtmId: "" },
+  // Production tracking remains off until cutover. The separate review
+  // container loads only when a tester explicitly opts in for this tab.
+  analytics: {
+    gtmId: "",
+    previewHost: "adhesaplate.countinglight.com",
+    previewGtmId: "GTM-TNPKNNTS",
+  },
 } as const;
 
 export const quoteHref = `mailto:${site.email}?subject=${encodeURIComponent("Quote request")}`;

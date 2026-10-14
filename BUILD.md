@@ -54,6 +54,17 @@ Run from the repository root.
 
 **Never run a bare `npx wrangler deploy`.** Always name the configuration.
 
+## Prototype analytics test
+
+The review hostname has a separate Google Tag Manager container, `GTM-TNPKNNTS`.
+It is off for ordinary visits. Open
+`https://adhesaplate.countinglight.com/?analytics=on` to opt in for the current
+browser tab. Navigation within that tab remains opted in. Open a URL with
+`?analytics=off` to turn it off. No tag loads on localhost or other hostnames.
+The production container ID remains empty, so this does not activate production
+tracking. Tag Manager must also contain a published GA4 Google tag using the
+test property's `G-` measurement ID before visits appear in GA4 reports.
+
 ## Deploying with Cloudflare
 
 ### One-time setup

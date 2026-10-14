@@ -1,23 +1,30 @@
 ---
-// Google Tag Manager, dormant until site.analytics.gtmId is set. Even then the
-// tag loads only on the production hostname, so review and local builds never
-// report traffic or need a consent banner.
+// Keep the review container separate from production. A tester must explicitly
+// opt in with ?analytics=on; the choice lasts only for the current browser tab.
 import { site } from "../site.config";
 
-const { gtmId } = site.analytics;
+const { gtmId, previewHost, previewGtmId } = site.analytics;
 ---
 
-{
-  gtmId && (
-    <script is:inline define:vars={{ gtmId, host: site.productionHost }}>
-      if (location.hostname === host || location.hostname === "www." + host) {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
-        const tag = document.createElement("script");
-        tag.async = true;
-        tag.src = "https://www.googletagmanager.com/gtm.js?id=" + gtmId;
-        document.head.appendChild(tag);
-      }
-    </script>
-  )
-}
+<script is:inline define:vars={{ gtmId, previewHost, previewGtmId, productionHost: site.productionHost }}>
+  const isProduction = location.hostname === productionHost || location.hostname === "www." + productionHost;
+  const isPreview = location.hostname === previewHost;
+  const choice = new URLSearchParams(location.search).get("analytics");
+  let testEnabled = isPreview && choice === "on";
+  if (isPreview) {
+    try {
+      if (choice === "on") sessionStorage.setItem("adhesaplate-analytics-test", "on");
+      if (choice === "off") sessionStorage.removeItem("adhesaplate-analytics-test");
+      testEnabled = sessionStorage.getItem("adhesaplate-analytics-test") === "on";
+    } catch (_) { /* A direct opt-in still works when session storage is blocked. */ }
+  }
+  const containerId = isProduction ? gtmId : testEnabled ? previewGtmId : "";
+  if (containerId) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+    const tag = document.createElement("script");
+    tag.async = true;
+    tag.src = "https://www.googletagmanager.com/gtm.js?id=" + encodeURIComponent(containerId);
+    document.head.appendChild(tag);
+  }
+</script>
