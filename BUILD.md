@@ -1,5 +1,9 @@
 # Building, deploying and operating the Adhesa Plate site
 
+The proposed Bluehost-only release flow and the repeatable owner SSH setup are in
+[doc/guides/bluehost-github-deployment.md](doc/guides/bluehost-github-deployment.md).
+The Cloudflare instructions below describe the current prototype setup until that flow is activated.
+
 The general recipe this repository follows, with the reasoning behind each choice, is
 [doc/guides/static-site-on-cloudflare.md](doc/guides/static-site-on-cloudflare.md). This file is the
 short, repository-specific version.
