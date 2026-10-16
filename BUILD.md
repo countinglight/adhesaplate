@@ -166,3 +166,31 @@ is checked at build time by `website/src/content.config.ts`.
 
 Catalog cards (the entries listed on the index pages) and the FAQ are data files under
 `website/src/data/`.
+
+## Bluehost staging
+
+The manual workflow at `.github/workflows/deploy-bluehost-staging.yml` builds the Astro
+source from `vlads-dev` and uploads `website/dist/` to
+`/home3/adhesapl/public_html/dev/` for `dev.adhesaplate.com`. It never runs on push.
+It needs the repository Actions secret `BLUEHOST_STAGING_SSH_KEY` containing the
+private half of the dedicated staging SSH key. The Bluehost SSH host key is
+pinned in the workflow to the public key already trusted on the maintainer's PC.
+
+GitHub requires a `workflow_dispatch` workflow to exist on the repository's
+default branch before the **Run workflow** button is available. Create and
+review this workflow on `vlads-dev`, then promote the workflow and helper
+script to `master` before its first manual run. The checkout step still builds
+`vlads-dev`; promoting these deployment files does not publish the site.
+
+Unlike Cloudflare, Bluehost's Apache does not apply the built `_headers` file.
+The workflow uses `npm run build -w website` and adds a noindex meta tag to
+each staging HTML page. Its `rsync --delete` removes stale, non-hidden output
+files only after verifying the exact Bluehost document root. It excludes
+top-level hidden files and folders, preserving Bluehost's `.htaccess` files
+and `.well-known` directory. The Git repository and SSH key are never
+uploaded.
+
+After the first run, verify `https://dev.adhesaplate.com/`, a few nested
+pages, assets, and the noindex tag; also confirm that the live WordPress site
+still works. To roll back, check out or revert the last good source commit on
+`vlads-dev` and run the workflow again.

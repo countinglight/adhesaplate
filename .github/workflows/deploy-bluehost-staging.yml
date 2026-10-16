@@ -1,0 +1,73 @@
+name: Deploy Astro to Bluehost staging
+
+# GitHub requires manually dispatched workflows to exist on the default branch.
+# The website source still comes from vlads-dev; this does not deploy on push.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bluehost-staging
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.repository == 'countinglight/adhesaplate'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out vlads-dev
+        uses: actions/checkout@v4
+        with:
+          ref: vlads-dev
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check site
+        run: npm run check
+
+      - name: Build Astro for Bluehost
+        run: npm run build -w website
+
+      - name: Prevent staging from being indexed
+        run: node scripts/mark-bluehost-staging-noindex.js
+
+      - name: Check deployable files
+        run: |
+          test -f website/dist/index.html
+          test ! -e website/dist/.htaccess
+          test ! -e website/dist/.well-known
+
+      - name: Configure SSH
+        env:
+          DEPLOY_KEY: ${{ secrets.BLUEHOST_STAGING_SSH_KEY }}
+        run: |
+          test -n "$DEPLOY_KEY"
+          install -m 700 -d "$HOME/.ssh"
+          printf '%s\n' "$DEPLOY_KEY" | tr -d '\r' > "$HOME/.ssh/adhesaplate-staging"
+          printf '%s\n' '173.254.104.106 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFnzrZ2BhLWDRBDm+/JMWbWh8aRQXMjevxfyhW+mHrCm' > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/adhesaplate-staging" "$HOME/.ssh/known_hosts"
+
+      - name: Verify exact Bluehost destination
+        run: |
+          ssh -i "$HOME/.ssh/adhesaplate-staging" \
+            -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes \
+            adhesapl@173.254.104.106 \
+            'test "$(cd /home3/adhesapl/public_html/dev && pwd -P)" = /home3/adhesapl/public_html/dev && test -f /home3/adhesapl/public_html/dev/.htaccess && test -d /home3/adhesapl/public_html/dev/.well-known'
+
+      - name: Upload static site
+        run: |
+          rsync -az --delete --exclude='/.*' \
+            -e "ssh -i $HOME/.ssh/adhesaplate-staging -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            website/dist/ \
+            adhesapl@173.254.104.106:/home3/adhesapl/public_html/dev/
