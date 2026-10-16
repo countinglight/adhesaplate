@@ -1,0 +1,139 @@
+name: Deploy Astro to Bluehost production (manual)
+
+# This workflow must also exist on the default branch to appear in GitHub's
+# Run workflow menu. Select the deploy branch when running it.
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: Plan is read-only; publish changes the live site
+        type: choice
+        options:
+          - plan
+          - publish
+        default: plan
+        required: true
+      confirm_sha:
+        description: For publish, paste the full 40-character deploy commit SHA
+        type: string
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bluehost-production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.repository == 'countinglight/adhesaplate' && github.ref == 'refs/heads/deploy'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install and check
+        run: |
+          npm ci
+          npm run check
+      - name: Build production site and ownership manifest
+        run: |
+          npm run build -w website
+          rm -f website/dist/_headers
+          node scripts/bluehost-production-manifest.mjs website/dist > production-manifest.txt
+          tar -czf production-site.tar.gz -C website/dist .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: production-site-${{ github.sha }}
+          path: |
+            production-site.tar.gz
+            production-manifest.txt
+          if-no-files-found: error
+          retention-days: 7
+
+  production:
+    needs: build
+    if: github.repository == 'countinglight/adhesaplate' && github.ref == 'refs/heads/deploy'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: production-site-${{ github.sha }}
+      - name: Verify downloaded build
+        run: |
+          mkdir site
+          tar -xzf production-site.tar.gz -C site
+          node scripts/bluehost-production-manifest.mjs site > verified-manifest.txt
+          cmp production-manifest.txt verified-manifest.txt
+      - name: Configure SSH
+        env:
+          DEPLOY_KEY: ${{ secrets.BLUEHOST_PRODUCTION_SSH_KEY }}
+        run: |
+          test -n "$DEPLOY_KEY"
+          install -m 700 -d "$HOME/.ssh"
+          printf '%s\n' "$DEPLOY_KEY" | tr -d '\r' > "$HOME/.ssh/adhesaplate-production"
+          printf '%s\n' '173.254.104.106 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFnzrZ2BhLWDRBDm+/JMWbWh8aRQXMjevxfyhW+mHrCm' > "$HOME/.ssh/known_hosts"
+          chmod 600 "$HOME/.ssh/adhesaplate-production" "$HOME/.ssh/known_hosts"
+      - name: Check production root and current state
+        run: |
+          ssh -i "$HOME/.ssh/adhesaplate-production" \
+            -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes \
+            adhesapl@173.254.104.106 \
+            'bash -s -- plan ${{ github.sha }}' < scripts/bluehost-production-remote.sh
+      - name: Show proposed changes without writing
+        run: |
+          rsync -azn --itemize-changes \
+            -e "ssh -i $HOME/.ssh/adhesaplate-production -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            site/ adhesapl@173.254.104.106:/home3/adhesapl/public_html/
+      - name: Confirm production release
+        if: inputs.operation == 'publish'
+        env:
+          CONFIRM_SHA: ${{ inputs.confirm_sha }}
+          RELEASE_SHA: ${{ github.sha }}
+        run: |
+          test "$CONFIRM_SHA" = "$RELEASE_SHA" || {
+            echo 'Publish requires the exact deploy commit SHA in confirm_sha.' >&2
+            exit 1
+          }
+      - name: Prepare incoming release outside public root
+        if: inputs.operation == 'publish'
+        run: |
+          ssh -i "$HOME/.ssh/adhesaplate-production" \
+            -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes \
+            adhesapl@173.254.104.106 \
+            'bash -s -- prepare ${{ github.sha }}' < scripts/bluehost-production-remote.sh
+      - name: Upload incoming release outside public root
+        if: inputs.operation == 'publish'
+        run: |
+          rsync -az \
+            -e "ssh -i $HOME/.ssh/adhesaplate-production -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            site/ adhesapl@173.254.104.106:/home3/adhesapl/.adhesaplate-deploy/incoming/${{ github.sha }}/site/
+          rsync -az \
+            -e "ssh -i $HOME/.ssh/adhesaplate-production -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes" \
+            production-manifest.txt adhesapl@173.254.104.106:/home3/adhesapl/.adhesaplate-deploy/incoming/${{ github.sha }}/manifest
+      - name: Activate production release
+        if: inputs.operation == 'publish'
+        run: |
+          ssh -i "$HOME/.ssh/adhesaplate-production" \
+            -o BatchMode=yes -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes \
+            adhesapl@173.254.104.106 \
+            'bash -s -- activate ${{ github.sha }}' < scripts/bluehost-production-remote.sh
+      - name: Check public production site
+        if: inputs.operation == 'publish'
+        run: |
+          curl -fsS --retry 3 https://adhesaplate.com/ > published-home.html
+          grep -qi 'https://adhesaplate.com/' published-home.html
+          ! grep -qi 'noindex' published-home.html
